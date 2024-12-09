@@ -109,7 +109,7 @@ export default function About(){
                     We’re changing the way people live
                   </h1>
                   <p className="mt-8 text-pretty text-lg font-medium text-gray-500 sm:max-w-md sm:text-xl/8 lg:max-w-none">
-                  SafeGrow provides grants, mentorship, and resources to help Palestinian refugees in Cairo, Egypt create sustainable, meaningful livelihoods. Whether you're looking for support or want to make a difference, SafeGrow is here to connect you.
+                  SafeGrow provides grants, mentorship, and resources to help Palestinian refugees in Cairo, Egypt create sustainable, meaningful livelihoods. Whether you are looking for support or want to make a difference, SafeGrow is here to connect you.
                   </p>
                 </div>
                 <div className="mt-14 flex justify-end gap-8 sm:-mt-44 sm:justify-start sm:pl-20 lg:mt-0 lg:pl-0">
