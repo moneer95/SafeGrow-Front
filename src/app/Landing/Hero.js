@@ -38,12 +38,12 @@ const Hero = () => {
         {/* Buttons */}
         <div className="flex space-x-4">
           <Link href={"/Donation"}>
-            <button className="px-10 py-3 bg-white text-[#87CA2F] font-semibold rounded-md hover:text-[#000] hover:bg-[#F3F3F3]">
+            <button className="px-10 py-3 bg-white text-[#009688] font-semibold rounded-md hover:text-[#000] hover:bg-[#F3F3F3]">
               I Need Help
             </button>
           </Link>
           <Link href={"/Donation"}>
-          <button className="px-10 py-3 bg-[#87CA2F] text-white font-semibold rounded-md hover:bg-gray-200 hover:text-black">
+          <button className="px-10 py-3 bg-[#009688] text-white font-semibold rounded-md hover:bg-gray-200 hover:text-black">
             I Want to Help
           </button>
           </Link>
