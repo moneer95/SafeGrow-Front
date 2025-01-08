@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { Sprout, Check, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import Navbar from '@/components/Navbar';
+import CheckoutForm from '@/components/CheckoutForm';
+import { useRouter } from 'next/router';
 
 const kits = [
   {
@@ -82,12 +84,19 @@ const kits = [
 ];
 
 export default function Donation() {
+  
+
   const [selectedKit, setSelectedKit] = useState(null);
 
-  const handleDonate = (kitName) => {
-    setSelectedKit(kitName);
-    // Add donation processing logic here
+  const handleDonate = (kit) => {
+    setSelectedKit(kit);
   };
+
+  if(selectedKit){
+    return (
+       <CheckoutForm amount={selectedKit.price} />
+    )
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -96,7 +105,7 @@ export default function Donation() {
       <div className="relative py-24 sm:pt-2 ">
         <Navbar />
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-[#87CA2F]/80 to-red-500/80" />
+          <div className="absolute inset-0" />
           <Image
             src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1600&auto=format&fit=crop&q=80"
             alt="Support background"
@@ -164,7 +173,7 @@ export default function Donation() {
                   ))}
                 </ul>
                 <button
-                  onClick={() => handleDonate(kit.name)}
+                  onClick={() => handleDonate(kit)}
                   className={`mt-8 w-full rounded-lg px-4 py-4 text-center text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-2 ${
                     kit.popular
                     ? 'bg-[#87CA2F] text-white hover:bg-[#87CA2F]/90'
