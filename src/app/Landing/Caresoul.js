@@ -1,331 +1,208 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Image from "next/image";
-import Link from "next/link"; // Import Link from next/link
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import "swiper/css/free-mode";
-import {
-  Pagination,
-  EffectCoverflow,
-  Autoplay,
-  Navigation,
-} from "swiper/modules";
+import "swiper/css/navigation";
 
-// Ensure you have a Loader component. If not, create a simple one or remove it.
-const Loader = () => (
-  <div className="flex justify-center items-center h-full">
-    <div className="loader">Loading...</div>
-    <style jsx>{`
-      .loader {
-        border: 8px solid #f3f3f3;
-        border-top: 8px solid #87CA2F;
-        border-radius: 50%;
-        width: 60px;
-        height: 60px;
-        animation: spin 1s linear infinite;
-      }
+const stories = [
+  {
+    id: 1,
+    name: "Zain Spices: Honoring Palestinian Heritage Through Flavor",
+    description:
+      "Abdelrahman fled Gaza in May 2024 after enduring unimaginable hardship. With SafeGrow's support, he founded Zain Spices, bringing authentic Palestinian flavors to Cairo while creating a sustainable livelihood for his family.",
+    img: "/iloveimg-converted/10.jpg",
+    color: "#87CA2F"
+  },
+  {
+    id: 2,
+    name: "Rama Kitchen: A Story of Love, Loss, and Resilience",
+    description:
+      "After losing her daughter Rama, Maha found strength in starting Rama Kitchen. With SafeGrow's help, she shares Palestinian culinary traditions, offering delicious, homemade meals crafted with love and tradition.",
+    img: "/iloveimg-converted/27.jpg",
+    color: "#ED5C2B"
+  },
+  {
+    id: 3,
+    name: "Raw'a: A Legacy Rebuilt with Passion and Perseverance",
+    description:
+      "Bilal rebuilt his family's thriving furniture business, Raw'a, in Cairo with SafeGrow's support. His exquisite craftsmanship and resilience stand as a testament to his determination to provide for his family and community.",
+    img: "/iloveimg-converted/14.jpg",
+    color: "#FBB13C"
+  },
+  {
+    id: 4,
+    name: "Rama Kitchen: A Story of Love, Loss, and Resilience",
+    description:
+      "After losing her daughter Rama, Maha found strength in starting Rama Kitchen. With SafeGrow's help, she shares Palestinian culinary traditions, offering delicious, homemade meals crafted with love and tradition.",
+    img: "/iloveimg-converted/27.jpg",
+    color: "#ED5C2B"
+  },
+];
 
-      @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-      }
-    `}</style>
-  </div>
-);
-
-const Caresoul = () => {
+const Carousel = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const swiperRef = useRef(null);
-  const [loading, setLoading] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
-
-  const properties = [
-    {
-      id: 1,
-      name: "Bilal&apos;s Story",
-      description:
-        "Bilal ran a successful furniture-making business in Gaza. With SafeGrow grant support, he rebuilt his business from the ground up.",
-      img: "/Car5.jpg",
-    },
-    {
-      id: 2,
-      name: "Aisha&apos;s Journey",
-      description:
-        "Aisha started her own bakery in Cairo, bringing sweet delights to her community.",
-      img: "/Car6.jpg",
-    },
-    {
-      id: 3,
-      name: "Omar&apos;s Adventure",
-      description:
-        "Omar explored sustainable farming techniques in rural Morocco, enhancing food security.",
-      img: "/Car7.jpg",
-    },
-    {
-      id: 4,
-      name: "Sara&apos;s Innovation",
-      description:
-        "Sara developed an app that connects local artisans with global markets, empowering creators.",
-      img: "/Car1.jpg",
-    },
-    {
-      id: 5,
-      name: "Khalid&apos;s Mission",
-      description:
-        "Khalid is dedicated to providing clean water solutions in Yemen, improving health standards.",
-      img: "/Car2.jpg",
-    },
-    {
-      id: 6,
-      name: "Laila&apos;s Vision",
-      description:
-        "Laila advocates for women's education in remote areas of Pakistan, fostering empowerment.",
-      img: "/Car3.jpg",
-    },
-    {
-      id: 7,
-      name: "Ahmed&apos;s Initiative",
-      description:
-        "Ahmed launched a renewable energy project in Kenya, promoting sustainable living.",
-      img: "/Car4.jpg",
-    },
-    {
-      id: 8,
-      name: "Maya&apos;s Creativity",
-      description:
-        "Maya&apos;s artwork has inspired many in her hometown in Indonesia, showcasing cultural heritage.",
-      img: "/Car5.jpg",
-    },
-    {
-      id: 9,
-      name: "Zara&apos;s Leadership",
-      description:
-        "Zara leads a community center that empowers youth in Lebanon, fostering future leaders.",
-      img: "/Car6.jpg",
-    },
-    {
-      id: 10,
-      name: "Hassan&apos;s Commitment",
-      description:
-        "Hassan works tirelessly to preserve cultural heritage in Iraq, maintaining historical sites.",
-      img: "/Car7.jpg",
-    },
-  ];
+  const swiperRef = useRef(null);
 
   useEffect(() => {
-    // Set loading to false after component mounts
-    setLoading(false);
-
-    // Function to check screen width
-    const checkScreenWidth = () => {
-      setIsMobile(window.innerWidth < 1280);
-    };
-
-    // Initial check
-    checkScreenWidth();
-
-    // Add event listener
-    window.addEventListener("resize", checkScreenWidth);
-
-    // Cleanup
-    return () => window.removeEventListener("resize", checkScreenWidth);
+    const handleResize = () => setIsMobile(window.innerWidth < 1024);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  return (
-    <div className="bg-white text-gray-900 w-full">
-      {/* Section name */}
-      <div className="text-center pt-12 px-4">
-        <h1 className="text-4xl font-bold text-[#87CA2F]">Stories of Impact</h1>
-        <p className="mt-4 text-lg text-gray-700 max-w-5xl mx-auto">
-          At SafeGrow, we believe in the power of stories to inspire change and
-          build connections. Through our programs, Palestinian refugees are not
-          only sharing their journeys but also reclaiming their futures. With
-          tenacity, faith, and your support, they&apos;re rebuilding businesses,
-          forging new opportunities, and creating sustainable livelihoods. These
-          stories reflect the strength, resilience, and dignity of the people we
-          serve and the profound impact of SafeGrow&apos;s mission.
-        </p>
-      </div>
+  const fadeIn = {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.6 }
+  };
 
-      {/* Carousels Section */}
-      <>
-        {isMobile ? (
-          <>
-            {loading ? (
-              <Loader />
-            ) : (
-              <div
-                className="container overflow-hidden h-[800px] py-[50px] max-w-[1440px] mx-auto p-8"
-                id="Topics"
-              >
-                <br />
-                <br />
-                <Swiper
-                  modules={[Navigation, Pagination, Autoplay]}
-                  spaceBetween={60}
-                  slidesPerView={1} // Shows 1 main slide and partial slides on sides
-                  centeredSlides={true} // Centers the active slide
-                  loop={true} // Enables infinite loop
-                  autoplay={{
-                    delay: 2000,
-                    disableOnInteraction: false,
-                  }}
-                  onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-                  navigation // Enables navigation buttons
-                  // pagination={{ clickable: true }} // Enables clickable pagination dots
-                  breakpoints={{
-                    320: { slidesPerView: 1, spaceBetween: 10 }, // Very small screens
-                    640: { slidesPerView: 1, spaceBetween: 20 }, // Small screens (like mobile)
-                    1024: { slidesPerView: 3, spaceBetween: 30 }, // Larger screens
-                  }}
-                  className="property-swiper"
-                >
-                  {properties.map((property, index) => (
-                    <SwiperSlide key={property.id}>
-                      <div
-                        className={`transition-transform duration-500 ${
-                          activeIndex === index ? "scale-105" : "scale-100"
-                        }`}
-                      >
-                        <div
-                          className={`relative p-6 flex cursor-pointer ${
-                            activeIndex === index
-                              ? "bg-transparent z-50 hover:filter hover:grayscale hover:brightness-75 h-[400px] transition-all"
-                              : "bg-transparent"
-                          }`}
-                        >
-                          <Image
-                            src={property.img}
-                            alt={property.name}
-                            layout="fill"
-                            objectFit="cover"
-                            className={`w-full h-full absolute left-0 bottom-0 object-cover rounded-lg transition-all duration-500 ${
-                              activeIndex === index
-                                ? "filter-none"
-                                : "filter grayscale brightness-75"
-                            }`}
-                          />
-                          <div className="absolute inset-0 w-full bg-gradient-to-t from-black via-black/40 to-transparent opacity-1000 rounded-lg"></div>
-                          {/* Content Positioned at the Bottom */}
-                          <div className="absolute bottom-0 left-0 right-0 p-4 z-20 flex flex-col items-start bg-gradient-to-t from-black via-transparent to-transparent rounded-b-lg">
-                            <span className="text-white ml-2 font-extrabold text-md">
-                              {property.name}
-                            </span>
-                            {activeIndex === index ? (
-                              <span className="text-white w-full text-left px-2 py-1 rounded-full text-xs">
-                                {property.description}
-                              </span>
-                            ) : (
-                              <span className="text-white w-full text-left px-2 py-1 rounded-full text-xs">
-                                {property.description.substring(0, 70)}...
-                              </span>
-                            )}
-                          </div>
-                        </div>
-                      </div>
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
-                <button className="bg-[#00303A] text-[#D9D9D9] border outline-none w-[60%] ml-[20%] mt-20 hover:bg-[#D9D9D9] hover:text-[#00303A] hover:border hover:border-[#00303A] font-semibold px-8 py-4 rounded-full transition duration-300">
-                  Get Started
-                </button>
-              </div>
-            )}
-          </>
-        ) : (
-          <div className="relative w-full h-[800px] mx-auto">
-            <Swiper
-              ref={swiperRef} // Assign ref to Swiper
-              spaceBetween={30}
-              slidesPerView={3.8}
-              centeredSlides={true}
-              loop={true}
-              autoplay={{ delay: 2000 }}
-              onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-              modules={[Autoplay, Pagination, Navigation]}
-              className="w-[130%]"
-            >
-              {properties.map((property, index) => (
-                <SwiperSlide key={property.id}>
-                  <div
-                    className={`transition-all mt-[100px] duration-500 transform ${
-                      activeIndex === index ? "scale-100" : "scale-100"
+  return (
+    <section className="bg-gradient-to-b from-gray-50 to-white py-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <motion.div
+          className="text-center mb-16"
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true }}
+          {...fadeIn}
+        >
+          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+            Stories of Impact
+          </h2>
+          <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
+            At SafeGrow, we believe in the power of stories to inspire change and build connections.
+            Through our programs, Palestinian refugees are not only sharing their journeys but also
+            reclaiming their futures. These stories reflect the strength, resilience, and dignity
+            of the people we serve.
+          </p>
+        </motion.div>
+
+        {/* Carousel */}
+        <motion.div
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true }}
+          {...fadeIn}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <Swiper
+            ref={swiperRef}
+            modules={[Autoplay, Navigation, Pagination]}
+            spaceBetween={24}
+            slidesPerView={isMobile ? 1 : 3}
+            centeredSlides={true}
+            loop={true}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
+            navigation={{
+              prevEl: '.swiper-button-prev',
+              nextEl: '.swiper-button-next',
+            }}
+            pagination={{
+              clickable: true,
+              dynamicBullets: true,
+            }}
+            onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+            className="pb-12"
+          >
+            {stories.map((story, index) => (
+              <SwiperSlide key={story.id}>
+                <Link href={`/stories/${story.id}`}>
+                  <motion.div
+                    className={`transition-all duration-500 cursor-pointer ${
+                      activeIndex === index ? 'scale-105' : 'scale-100'
                     }`}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.98 }}
                   >
-                    <div
-                      className={`relative p-6 flex cursor-pointer ${
-                        activeIndex === index
-                          ? "bg-transparent z-50 hover:filter hover:grayscale hover:brightness-75 h-[400px] transition-all"
-                          : "bg-transparent h-[200px] z-10 mt-[300px]"
-                      }`}
-                    >
+                    <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-lg group">
                       <Image
-                        src={property.img}
-                        alt={property.name}
-                        layout="fill"
-                        objectFit="cover"
-                        className={`w-full h-full absolute bottom-0 object-cover rounded-lg transition-all duration-500 ${
-                          activeIndex === index
-                            ? "filter-none"
-                            : "filter grayscale brightness-75"
+                        src={story.img}
+                        alt={story.name}
+                        fill
+                        className={`object-cover transition-all duration-500 group-hover:scale-105 ${
+                          activeIndex === index ? 'brightness-90' : 'brightness-75'
                         }`}
                       />
-                      {/* Gradient overlay for inner shadow effect */}
-                      <div className="absolute inset-0 w-full ml-6 bg-gradient-to-t from-black via-black/40 to-transparent opacity-1000 rounded-lg"></div>
-                      {/* Position content at the bottom */}
-                      <div className="absolute bottom-0 left-0 right-0 p-10 z-20 flex flex-col items-start">
-                        <span className="text-white text-left carsoulitems font-extrabold px-2 py-1 z-40 rounded-full text-xl">
-                          {property.name}
+                      <div
+                        className="absolute inset-0 transition-opacity duration-300"
+                        style={{
+                          background: `linear-gradient(to bottom, 
+                            transparent 0%, 
+                            rgba(0, 0, 0, 0.7) 50%, 
+                            rgba(0, 0, 0, 0.85) 100%
+                          )`
+                        }}
+                      />
+
+                      <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                        <h3 className="text-xl font-bold mb-2">{story.name}</h3>
+                        <p className="text-sm leading-relaxed opacity-90">
+                          {activeIndex === index ? story.description : `${story.description.substring(0, 70)}...`}
+                        </p>
+                        <span className="inline-flex items-center mt-4 text-white font-medium group-hover:text-[#86CA2F] transition-colors duration-300">
+                          Read full story
+                          <ChevronRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" />
                         </span>
-                        {activeIndex === index ? (
-                          <span className="text-white text-left w-[90%] px-2 carsoulitems z-40 py-1 rounded-full text-xs">
-                            {property.description}
-                          </span>
-                        ) : (
-                          <span className="text-white w-[70%] text-left px-2 carsoulitems z-40 py-1 rounded-full text-xs">
-                            {property.description.substring(0, 70)}.....
-                          </span>
-                        )}
                       </div>
                     </div>
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-            {/* Custom navigation buttons */}
-            <div className="flex justify-between max-w-[1440px] items-center mt-10 mx-auto">
-              <div className="flex gap-4 ml-[100px] mt-10">
-                <button
-                  className="px-6 py-4 text-gray-900 bg-transparent border border-gray-900 rounded-full"
-                  onClick={() => swiperRef.current.swiper.slidePrev()}
-                >
-                  &#10094;
-                </button>
-                <button
-                  className="px-6 py-4 text-gray-900 bg-transparent border border-gray-900 rounded-full"
-                  onClick={() => swiperRef.current.swiper.slideNext()}
-                >
-                  &#10095;
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
-      </>
+                  </motion.div>
+                </Link>
+              </SwiperSlide>
+            ))}
+          </Swiper>
 
-      {/* Footer CTA */}
-      <div className="text-center pb-12 px-4">
-        <h2 className="text-2xl font-bold">Inspired by these stories?</h2>
-        <Link href="/donate" className="mt-4 inline-block text-lg text-[#87CA2F] underline font-semibold hover:text-[#6da02b]"> {/* Replaced <a> with <Link /> */}
-            Find out how you can help by donating or becoming a mentor today.
-        </Link>
+          {/* Custom Navigation */}
+          <div className="flex justify-center gap-4 mt-8">
+            <button
+              className="swiper-button-prev p-3 rounded-full border border-gray-300 hover:border-gray-400 transition-colors"
+              aria-label="Previous slide"
+            >
+              <ChevronLeft className="w-6 h-6 text-gray-600" />
+            </button>
+            <button
+              className="swiper-button-next p-3 rounded-full border border-gray-300 hover:border-gray-400 transition-colors"
+              aria-label="Next slide"
+            >
+              <ChevronRight className="w-6 h-6 text-gray-600" />
+            </button>
+          </div>
+        </motion.div>
+
+        {/* Call to Action */}
+        <motion.div
+          className="text-center mt-16"
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true }}
+          {...fadeIn}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">
+            Inspired by these stories?
+          </h3>
+          <Link
+            href="/Donation"
+            className="inline-flex items-center text-[#86CA2F] hover:text-[#6da02b] font-semibold transition-colors"
+          >
+            Find out how you can help
+            <ChevronRight className="w-5 h-5 ml-1" />
+          </Link>
+        </motion.div>
       </div>
-    </div>
+    </section>
   );
 };
 
-export default Caresoul;
+export default Carousel;

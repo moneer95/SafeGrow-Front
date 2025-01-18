@@ -1,292 +1,131 @@
-'use client'
+"use client";
 
-import { Fragment, useState } from 'react'
+import React from "react";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import Navbar from "@/components/Navbar";
 
-import Navbar from '@/components/Navbar'
-import Image from 'next/image'
-
-const currencies = ['CAD', 'USD', 'AUD', 'EUR', 'GBP']
-const navigation = {
-  categories: [
-    {
-      name: 'Women',
-      featured: [
-        {
-          name: 'New Arrivals',
-          href: '#',
-          imageSrc: '/hand1.jpg',
-          imageAlt: 'Models sitting back to back, wearing Basic Tee in black and bone.',
-        },
-        {
-          name: 'Basic Tees',
-          href: '#',
-          imageSrc: 'https://tailwindui.com/plus/img/ecommerce-images/mega-menu-category-02.jpg',
-          imageAlt: 'Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.',
-        },
-        {
-          name: 'Accessories',
-          href: '#',
-          imageSrc: 'https://tailwindui.com/plus/img/ecommerce-images/mega-menu-category-03.jpg',
-          imageAlt: 'Model wearing minimalist watch with black wristband and white watch face.',
-        },
-        {
-          name: 'Carry',
-          href: '#',
-          imageSrc: 'https://tailwindui.com/plus/img/ecommerce-images/mega-menu-category-04.jpg',
-          imageAlt: 'Model opening tan leather long wallet with credit card pockets and cash pouch.',
-        },
-      ],
-    },
-    {
-      name: 'Men',
-      featured: [
-        {
-          name: 'New Arrivals',
-          href: '#',
-          imageSrc: 'https://tailwindui.com/plus/img/ecommerce-images/mega-menu-01-men-category-01.jpg',
-          imageAlt: 'Hats and sweaters on wood shelves next to various colors of t-shirts on hangers.',
-        },
-        {
-          name: 'Basic Tees',
-          href: '#',
-          imageSrc: 'https://tailwindui.com/plus/img/ecommerce-images/mega-menu-01-men-category-02.jpg',
-          imageAlt: 'Model wearing light heather gray t-shirt.',
-        },
-        {
-          name: 'Accessories',
-          href: '#',
-          imageSrc: 'https://tailwindui.com/plus/img/ecommerce-images/mega-menu-01-men-category-03.jpg',
-          imageAlt:
-            'Grey 6-panel baseball hat with black brim, black mountain graphic on front, and light heather gray body.',
-        },
-        {
-          name: 'Carry',
-          href: '#',
-          imageSrc: 'https://tailwindui.com/plus/img/ecommerce-images/mega-menu-01-men-category-04.jpg',
-          imageAlt: 'Model putting folded cash into slim card holder olive leather wallet with hand stitching.',
-        },
-      ],
-    },
-  ],
-  pages: [
-    { name: 'Company', href: '#' },
-    { name: 'Stores', href: '#' },
-  ],
-}
-const collections = [
-  {
-    name: "Laila Shop for Hand Made Stroy",
-    href: '#',
-    imageSrc: '/hand1.jpg',
-    imageAlt: 'Laila Shop for Hand Made',
-  },
-  {
-    name: "Professional Wallpapers, Jalal",
-    href: '#',
-    imageSrc: '/hand5.jpeg',
-    imageAlt: 'Man wearing a comfortable and casual cotton t-shirt.',
-  },
-  {
-    name: 'Palestinian Scarfs, Haj Hasan Strory',
-    href: '#',
-    imageSrc: '/hand4.jpeg',
-    imageAlt: 'Person sitting at a wooden desk with paper note organizer, pencil and tablet.',
-  },
-]
-const trendingProducts = [
+// Using the same stories data from the Carousel component
+const stories = [
   {
     id: 1,
-    name: 'Leather Long Wallet',
-    color: 'Natural',
-    price: '$75',
-    href: '#',
-    imageSrc: 'https://tailwindui.com/plus/img/ecommerce-images/home-page-04-trending-product-02.jpg',
-    imageAlt: 'Hand stitched, orange leather long wallet.',
-  },
-  // More products...
-]
-const perks = [
-  {
-    name: 'Free returns',
-    imageUrl: 'https://tailwindui.com/plus/img/ecommerce/icons/icon-returns-light.svg',
-    description: 'Not what you expected? Place it back in the parcel and attach the pre-paid postage stamp.',
-  },
-  {
-    name: 'Same day delivery',
-    imageUrl: 'https://tailwindui.com/plus/img/ecommerce/icons/icon-calendar-light.svg',
+    name: "Zain Spices: Honoring Palestinian Heritage Through Flavor",
     description:
-      'We offer a delivery service that has never been done before. Checkout today and receive your products within hours.',
+      "Abdelrahman fled Gaza in May 2024 after enduring unimaginable hardship. With SafeGrow's support, he founded Zain Spices, bringing authentic Palestinian flavors to Cairo while creating a sustainable livelihood for his family.",
+    img: "/iloveimg-converted/10.jpg",
+    color: "#87CA2F"
   },
   {
-    name: 'All year discount',
-    imageUrl: 'https://tailwindui.com/plus/img/ecommerce/icons/icon-gift-card-light.svg',
-    description: 'Looking for a deal? You can use the code "ALLYEAR" at checkout and get money off all year round.',
+    id: 2,
+    name: "Rama Kitchen: A Story of Love, Loss, and Resilience",
+    description:
+      "After losing her daughter Rama, Maha found strength in starting Rama Kitchen. With SafeGrow's help, she shares Palestinian culinary traditions, offering delicious, homemade meals crafted with love and tradition.",
+    img: "/iloveimg-converted/27.jpg",
+    color: "#ED5C2B"
   },
   {
-    name: 'For the planet',
-    imageUrl: 'https://tailwindui.com/plus/img/ecommerce/icons/icon-planet-light.svg',
-    description: 'We’ve pledged 1% of sales to the preservation and restoration of the natural environment.',
+    id: 3,
+    name: "Raw'a: A Legacy Rebuilt with Passion and Perseverance",
+    description:
+      "Bilal rebuilt his family's thriving furniture business, Raw'a, in Cairo with SafeGrow's support. His exquisite craftsmanship and resilience stand as a testament to his determination to provide for his family and community.",
+    img: "/iloveimg-converted/14.jpg",
+    color: "#FBB13C"
   },
-]
-const footerNavigation = {
-  products: [
-    { name: 'Bags', href: '#' },
-    { name: 'Tees', href: '#' },
-    { name: 'Objects', href: '#' },
-    { name: 'Home Goods', href: '#' },
-    { name: 'Accessories', href: '#' },
-  ],
-  company: [
-    { name: 'Who we are', href: '#' },
-    { name: 'Sustainability', href: '#' },
-    { name: 'Press', href: '#' },
-    { name: 'Careers', href: '#' },
-    { name: 'Terms & Conditions', href: '#' },
-    { name: 'Privacy', href: '#' },
-  ],
-  customerService: [
-    { name: 'Contact', href: '#' },
-    { name: 'Shipping', href: '#' },
-    { name: 'Returns', href: '#' },
-    { name: 'Warranty', href: '#' },
-    { name: 'Secure Payments', href: '#' },
-    { name: 'FAQ', href: '#' },
-    { name: 'Find a store', href: '#' },
-  ],
-}
 
-export default function Example() {
-  const [open, setOpen] = useState(false)
+];
+
+export default function StoriesPage() {
+  const fadeIn = {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.6 }
+  };
 
   return (
-    <div className="bg-white">
+    <main className="min-h-screen bg-white">
       <Navbar 
-        darkMode="true"
+        darkMode
       />
-      <main>
-        {/* Hero section */}
-        <div className="relative">
-          {/* Background image and overlap */}
-          <div aria-hidden="true" className="absolute inset-0 hidden sm:flex sm:flex-col">
-            <div className="relative w-full flex-1 bg-gray-800">
-              <div className="absolute inset-0 overflow-hidden">
-                <img
-                  alt=""
-                  src="https://tailwindui.com/plus/img/ecommerce-images/home-page-04-hero-full-width.jpg"
-                  className="size-full object-cover"
-                />
-              </div>
-              <div className="absolute inset-0 bg-gray-900 opacity-50" />
-            </div>
-            <div className="h-32 w-full bg-white md:h-40 lg:h-48" />
-          </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+        {/* Header */}
+        <motion.div 
+          className="text-center max-w-3xl mx-auto mb-16"
+          initial="initial"
+          animate="animate"
+          variants={fadeIn}
+        >
+          <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+            Stories of Impact
+            <span className="block mt-2 text-3xl lg:text-4xl font-medium text-gray-600">
+              Real Lives, Real Change
+            </span>
+          </h1>
+          <p className="mt-6 text-lg text-gray-600">
+            Each story represents a journey of resilience, determination, and hope. 
+            Through SafeGrow's support, these individuals have transformed challenges 
+            into opportunities, creating lasting impact in their communities.
+          </p>
+        </motion.div>
 
-          <div className="relative mx-auto max-w-3xl px-4 pb-96 text-center sm:px-6 sm:pb-0 lg:px-8">
-            {/* Background image and overlap */}
-            <div aria-hidden="true" className="absolute inset-0 flex flex-col sm:hidden">
-              <div className="relative w-full flex-1 bg-gray-800">
-                <div className="absolute inset-0 overflow-hidden">
-                  <img
-                    alt=""
-                    src="https://tailwindui.com/plus/img/ecommerce-images/home-page-04-hero-full-width.jpg"
-                    className="size-full object-cover"
-                  />
-                </div>
-                <div className="absolute inset-0 bg-gray-900 opacity-50" />
-              </div>
-              <div className="h-48 w-full bg-white" />
-            </div>
-            <div className="relative py-32">
-              <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">Success Stories for People we helped  </h1>
-              {/* <div className="mt-4 sm:mt-6">
-                <a
-                  href="#"
-                  className="inline-block rounded-md border border-transparent bg-indigo-600 px-8 py-3 font-medium text-white hover:bg-indigo-700"
-                >
-                  Shop Collection
-                </a>
-              </div> */}
-            </div>
-          </div>
-
-          <section aria-labelledby="collection-heading" className="relative -mt-96 sm:mt-0">
-            <h2 id="collection-heading" className="sr-only">
-              Collections
-            </h2>
-            <div className="mx-auto grid max-w-md grid-cols-1 gap-y-6 px-4 sm:max-w-7xl sm:grid-cols-3 sm:gap-x-6 sm:gap-y-0 sm:px-6 lg:gap-x-8 lg:px-8">
-              {collections.map((collection) => (
-                <div
-                  key={collection.name}
-                  className="group relative h-96 rounded-lg bg-white shadow-xl sm:aspect-[4/5] sm:h-auto"
-                >
-                  <div aria-hidden="true" className="absolute inset-0 overflow-hidden rounded-lg">
-                    <div className="absolute inset-0 overflow-hidden group-hover:opacity-75">
-                      <Image width={1000} height={1000} alt={collection.imageAlt} src={collection.imageSrc} className="size-full object-cover" />
-                    </div>
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-50" />
+        {/* Stories Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {stories.map((story, index) => (
+            <motion.div
+              key={story.id}
+              initial="initial"
+              animate="animate"
+              variants={fadeIn}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+            >
+              <Link href={`/stories/${story.id}`}>
+                <div className="group relative rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-lg transition-all duration-300">
+                  {/* Image */}
+                  <div className="relative aspect-[4/3]">
+                    <Image
+                      src={story.img}
+                      alt={story.name}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors duration-300" />
                   </div>
-                  <div className="absolute inset-0 flex items-end rounded-lg p-6">
-                    <div>
-                      <p aria-hidden="true" className="text-sm text-white">
-                        Shop the collection
-                      </p>
-                      <h3 className="mt-1 font-semibold text-white">
-                        <a href={collection.href}>
-                          <span className="absolute inset-0" />
-                          {collection.name}
-                        </a>
-                      </h3>
+
+                  {/* Content */}
+                  <div className="absolute inset-0 p-6 flex flex-col justify-end">
+                    <h2 className="text-2xl font-bold text-white mb-2">
+                      {story.name}
+                    </h2>
+                    <p className="text-white/90 line-clamp-2 mb-4 text-sm">
+                      {story.description}
+                    </p>
+                    <div className="flex items-center text-white text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      Read full story
+                      <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
                     </div>
                   </div>
                 </div>
-              ))}
-            </div>
-          </section>
+              </Link>
+            </motion.div>
+          ))}
         </div>
 
-        <section aria-labelledby="trending-heading">
-          <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8 lg:pt-32">
-            <div className="md:flex md:items-center md:justify-between">
-              <h2 id="favorites-heading" className="text-2xl font-bold tracking-tight text-gray-900">
-                Trending Products
-              </h2>
-              <a href="#" className="hidden text-sm font-medium text-indigo-600 hover:text-indigo-500 md:block">
-                Shop the collection
-                <span aria-hidden="true"> &rarr;</span>
-              </a>
-            </div>
-
-            <div className="mt-6 grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 md:grid-cols-4 md:gap-y-0 lg:gap-x-8">
-              {trendingProducts.map((product) => (
-                <div key={product.id} className="group relative">
-                  <div className="h-56 w-full overflow-hidden rounded-md group-hover:opacity-75 lg:h-72 xl:h-80">
-                    <img alt={product.imageAlt} src={product.imageSrc} className="size-full object-cover" />
-                  </div>
-                  <h3 className="mt-4 text-sm text-gray-700">
-                    <a href={product.href}>
-                      <span className="absolute inset-0" />
-                      {product.name}
-                    </a>
-                  </h3>
-                  <p className="mt-1 text-sm text-gray-500">{product.color}</p>
-                  <p className="mt-1 text-sm font-medium text-gray-900">{product.price}</p>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-8 text-sm md:hidden">
-              <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
-                Shop the collection
-                <span aria-hidden="true"> &rarr;</span>
-              </a>
-            </div>
-          </div>
-        </section>
-
-
-      </main>
-
-
-    </div>
-  )
+        {/* Footer CTA */}
+        <motion.div 
+          className="text-center mt-16"
+          initial="initial"
+          animate="animate"
+          variants={fadeIn}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            These stories represent just a fraction of the lives touched by SafeGrow. 
+            Join us in creating more success stories and empowering Palestinian refugees 
+            to build sustainable futures.
+          </p>
+        </motion.div>
+      </div>
+    </main>
+  );
 }

@@ -8,7 +8,7 @@ const Hero = () => {
   return (
     <section
       className="bg-cover bg-center relative pb-64 max-h-[50px]"
-      style={{ backgroundImage: "url('/image1.jpg')", backgroundPosition: "center" }}
+      style={{ backgroundImage: "url('/iloveimg-converted/1.jpg')", backgroundPosition: "center" }}
     >
       <Navbar />
 

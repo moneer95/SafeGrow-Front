@@ -5,7 +5,6 @@ import HowSafeGrowWorks from "./HowSafeGrowWorks";
 import GetInvolved from "./GetInvolved";
 import Caresoul from "./Caresoul";
 import Commitment from "./Commitment";
-import TogetherSection from "./TogetherSection";
 import ContactUs from "./ContactUs";
 import NewsletterSignup from "./Footer";
 import TopBar from '@/components/TopBar';
@@ -18,7 +17,6 @@ const LandingPage = () => {
    <GetInvolved/>
    <Caresoul/>
    <Commitment/>
-   <TogetherSection/>
    <ContactUs/>
    <NewsletterSignup/>
    </>
