@@ -88,7 +88,7 @@ const Hero = () => {
       {/* Low-Quality Image Placeholder with Blur Effect */}
       <div
         className={`absolute inset-0 bg-cover bg-center transition-all duration-700 ${
-          imageLoaded ? "opacity-100" : "opacity-0 blur-sm"
+          imageLoaded ? "opacity-0" : "opacity-0 blur-sm"
         }`}
         style={{
           backgroundImage: `url('${images[currentIndex]}')`,
