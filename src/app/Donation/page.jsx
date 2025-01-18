@@ -84,7 +84,7 @@ const kits = [
 ];
 
 export default function Donation() {
-  
+
 
   const [selectedKit, setSelectedKit] = useState(null);
 
@@ -92,9 +92,9 @@ export default function Donation() {
     setSelectedKit(kit);
   };
 
-  if(selectedKit){
+  if (selectedKit) {
     return (
-       <CheckoutForm amount={selectedKit.price} />
+      <CheckoutForm amount={selectedKit.price} />
     )
   }
 
@@ -113,6 +113,7 @@ export default function Donation() {
             className="object-cover object-top "
             priority
           />
+          <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors duration-300" />
         </div>
         <div className="relative">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -135,11 +136,10 @@ export default function Donation() {
             {kits.map((kit) => (
               <div
                 key={kit.name}
-                className={`relative flex flex-col rounded-2xl border-4 ${
-                  kit.popular
+                className={`relative flex flex-col rounded-2xl border-4 ${kit.popular
                     ? 'border-[#009688]'
                     : 'border-gray-200'
-                } p-8 transition-all duration-300 hover:shadow-lg`}
+                  } p-8 transition-all duration-300 hover:shadow-lg`}
               >
                 {kit.popular && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2">
@@ -174,11 +174,10 @@ export default function Donation() {
                 </ul>
                 <button
                   onClick={() => handleDonate(kit)}
-                  className={`mt-8 w-full rounded-lg px-4 py-4 text-center text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-2 ${
-                    kit.popular
-                    ? 'bg-[#87CA2F] text-white hover:bg-[#87CA2F]/90'
-                    : 'bg-[#009688] text-white hover:bg-[#009688]/90'
-                  }`}
+                  className={`mt-8 w-full rounded-lg px-4 py-4 text-center text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-2 ${kit.popular
+                      ? 'bg-[#87CA2F] text-white hover:bg-[#87CA2F]/90'
+                      : 'bg-[#009688] text-white hover:bg-[#009688]/90'
+                    }`}
                 >
                   Get {kit.name}
                   <ArrowRight className="h-4 w-4" />
