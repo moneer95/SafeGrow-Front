@@ -163,21 +163,6 @@ const Carousel = () => {
             ))}
           </Swiper>
 
-          {/* Custom Navigation */}
-          <div className="flex justify-center gap-4 mt-8">
-            <button
-              className="swiper-button-prev p-3 rounded-full border border-gray-300 hover:border-gray-400 transition-colors"
-              aria-label="Previous slide"
-            >
-              <ChevronLeft className="w-6 h-6 text-gray-600" />
-            </button>
-            <button
-              className="swiper-button-next p-3 rounded-full border border-gray-300 hover:border-gray-400 transition-colors"
-              aria-label="Next slide"
-            >
-              <ChevronRight className="w-6 h-6 text-gray-600" />
-            </button>
-          </div>
         </motion.div>
 
         {/* Call to Action */}
