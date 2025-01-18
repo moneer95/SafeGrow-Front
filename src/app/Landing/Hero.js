@@ -1,9 +1,8 @@
 "use client";
 
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
-
 
 const Hero = () => {
   const images = [
@@ -14,19 +13,25 @@ const Hero = () => {
     "/iloveimg-converted/7.jpg",
     "/iloveimg-converted/8.jpg",
   ]; // Add your image paths here
+
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
+      setImageLoaded(false); // Reset image loading state when switching image
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 5000); // Change image every 5 seconds
+    }, 7500); // Change image every 5 seconds
+
     return () => clearInterval(interval);
   }, [images.length]);
 
   return (
     <section
       className="bg-cover bg-center relative pb-64 max-h-[1000px] transition-all duration-700"
-      style={{ backgroundImage: `url('${images[currentIndex]}')` }}
+      style={{
+        backgroundImage: `url('${images[currentIndex]}')`,
+      }}
     >
       <Navbar />
 
@@ -78,6 +83,24 @@ const Hero = () => {
             }`}
           ></div>
         ))}
+      </div>
+
+      {/* Low-Quality Image Placeholder with Blur Effect */}
+      <div
+        className={`absolute inset-0 bg-cover bg-center transition-all duration-700 ${
+          imageLoaded ? "opacity-100" : "opacity-0 blur-sm"
+        }`}
+        style={{
+          backgroundImage: `url('${images[currentIndex]}')`,
+        }}
+      >
+        {/* Trigger when the high-quality image has loaded */}
+        <img
+          src={images[currentIndex]}
+          alt={`Hero Image ${currentIndex}`}
+          className="hidden"
+          onLoad={() => setImageLoaded(true)}
+        />
       </div>
     </section>
   );
