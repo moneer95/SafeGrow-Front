@@ -13,12 +13,10 @@ const LandingPage = () => {
    <>
    <Hero/>
    <About/>
-   <HowSafeGrowWorks/>
-   <GetInvolved/>
+   {/* <HowSafeGrowWorks/> */}
    <Caresoul/>
-   <Commitment/>
+   <GetInvolved/>
    <ContactUs/>
-   <NewsletterSignup/>
    </>
   )
 }

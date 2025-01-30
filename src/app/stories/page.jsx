@@ -22,7 +22,7 @@ const stories = [
     name: "Rama Kitchen: A Story of Love, Loss, and Resilience",
     description:
       "After losing her daughter Rama, Maha found strength in starting Rama Kitchen. With SafeGrow's help, she shares Palestinian culinary traditions, offering delicious, homemade meals crafted with love and tradition.",
-    img: "/iloveimg-converted/27.jpg",
+    img: "/iloveimg-converted/21.jpg",
     color: "#ED5C2B"
   },
   {
@@ -30,7 +30,7 @@ const stories = [
     name: "Raw'a: A Legacy Rebuilt with Passion and Perseverance",
     description:
       "Bilal rebuilt his family's thriving furniture business, Raw'a, in Cairo with SafeGrow's support. His exquisite craftsmanship and resilience stand as a testament to his determination to provide for his family and community.",
-    img: "/iloveimg-converted/14.jpg",
+    img: "/iloveimg-converted/4.jpg",
     color: "#FBB13C"
   },
 

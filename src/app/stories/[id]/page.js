@@ -76,8 +76,8 @@ const storiesData = [
         ],
         quote:
             "SafeGrow didn't just help me restart my business; they helped me rebuild my dignity and purpose.",
-        img: "/iloveimg-converted/12.jpg",
-        gallery: ["/iloveimg-converted/13.jpg", "/iloveimg-converted/12.jpg", "/iloveimg-converted/14.jpg", "/iloveimg-converted/15.jpg"],
+        img: "/iloveimg-converted/4.jpg",
+        gallery: ["/iloveimg-converted/4.jpg", "/iloveimg-converted/7.jpg"],
         color: "#FBB13C"
     }
 ];
