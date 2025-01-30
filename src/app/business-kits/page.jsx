@@ -3,8 +3,8 @@
 import { useState } from 'react';
 import { Sprout, Check, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
-import Navbar from '@/components/Navbar';
-import CheckoutForm from '@/components/CheckoutForm';
+import Navbar from '../../components/Navbar';
+import CheckoutForm from '../../components/CheckoutForm';
 import { useRouter } from 'next/router';
 
 const kits = [

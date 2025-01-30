@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useParams } from "next/navigation";
-import Navbar from "@/components/Navbar";
+import Navbar from "../../components/Navbar";
 import { ArrowLeft, HeartHandshake, Image as ImageIcon, Palette, Heart } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
