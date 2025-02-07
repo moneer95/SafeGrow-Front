@@ -10,7 +10,7 @@ const LandingPage = () => {
   return (
    <>
    <Hero/>
-   <About/>
+   {/* <About/> */}
    {/* <HowSafeGrowWorks/> */}
    <Caresoul/>
    <GetInvolved/>

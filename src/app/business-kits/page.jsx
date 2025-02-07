@@ -1,91 +1,52 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { Sprout, Check, ArrowRight } from 'lucide-react';
-import Image from 'next/image';
-import Navbar from '../../components/Navbar';
-import CheckoutForm from '../../components/CheckoutForm';
-import { useRouter } from 'next/router';
+import { useState } from "react";
+import { Sprout, Check, ArrowRight, Mail, Phone } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import Navbar from "../../components/Navbar";
+import CheckoutForm from "../../components/CheckoutForm";
+import { motion } from "framer-motion";
 
 const kits = [
   {
-    name: 'Starter Kit',
-    price: 50,
-    description: 'Help a refugee start their journey',
+    name: "Small Business Starter Kit",
+    price: 300,
+    description: "Support small, local businesses like crafting, tailoring, tutoring, or plant-growing. This kit provides the basics to help start and sustain a small venture.",
     features: [
-      'Digital skills training access',
-      'Basic business templates',
-      'Community forum access',
-      'Digital certificate of support'
+      "Materials and equipment for businesses like crafting, tailoring, or tutoring",
+      "Mentorship to guide them in the early stages of their business"
     ],
-    image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&auto=format&fit=crop&q=60'
+    impact: "Help create income-generating opportunities for displaced Palestinians and preserve cultural skills and traditions.",
+    image: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&auto=format&fit=crop&q=60"
   },
   {
-    name: 'Growth Kit',
-    price: 100,
-    description: 'Support sustainable business development',
-    features: [
-      'All Starter Kit features',
-      'Business mentorship session',
-      'Marketing strategy guide',
-      'Exclusive workshops access'
-    ],
-    popular: true,
-    image: 'https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=800&auto=format&fit=crop&q=60'
-  },
-  {
-    name: 'Impact Kit',
-    price: 250,
-    description: 'Make a significant difference',
-    features: [
-      'All Growth Kit features',
-      'Equipment funding contribution',
-      'Priority support access',
-      'Impact report & updates'
-    ],
-    image: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&auto=format&fit=crop&q=60'
-  },
-  {
-    name: 'Empowerment Kit',
-    price: 500,
-    description: 'Provide advanced support and mentorship',
-    features: [
-      'All Impact Kit features',
-      'Access to global mentors',
-      'Advanced digital tools',
-      'Extended project funding'
-    ],
-    image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&auto=format&fit=crop&q=60'
-  },
-  {
-    name: 'Freedom Kit',
+    name: "Freelancer & Online Business Kit",
     price: 1000,
-    description: 'Empower an entire community',
+    description: "For digital entrepreneurs and freelancers, this kit equips individuals with the tools to start or grow their online businesses—whether it's freelance work or selling products online.",
     features: [
-      'All Empowerment Kit features',
-      'Community development funds',
-      'Local event sponsorship',
-      'Lifetime impact report access'
+      "Laptop, camera, or digital tools needed for online work",
+      "Access to software, hosting, and online marketing tools",
+      "Mentorship from industry professionals"
     ],
-    image: 'https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=800&auto=format&fit=crop&q=60'
+    impact: "Empower displaced Palestinians to tap into the global digital economy and build sustainable freelance careers.",
+    image: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=800&auto=format&fit=crop&q=60",
+    popular: true
   },
   {
-    name: 'Heritage Kit',
+    name: "Advanced Business Equipment Kit",
     price: 2000,
-    description: 'Preserve and promote Palestinian heritage',
+    description: "This kit is for those looking to launch more complex businesses, like woodworking or cooking ventures. It provides high-quality equipment to get these businesses off the ground.",
     features: [
-      'Support for artisans',
-      'Tools for cultural preservation',
-      'Mentorship in arts & crafts',
-      'Special recognition'
+      "Equipment for woodworking (e.g., saws, drills) or cooking (e.g., ovens, utensils)",
+      "Business development support and mentorship for scaling"
     ],
-    image: 'https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=800&auto=format&fit=crop&q=60'
+    impact: "Help displaced Palestinians launch larger-scale businesses, creating long-term income and employment opportunities.",
+    image: "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=800&auto=format&fit=crop&q=60"
   }
 ];
 
-export default function Donation() {
-
-
+export default function BusinessKits() {
   const [selectedKit, setSelectedKit] = useState(null);
 
   const handleDonate = (kit) => {
@@ -93,53 +54,69 @@ export default function Donation() {
   };
 
   if (selectedKit) {
-    return (
-      <CheckoutForm amount={selectedKit.price} />
-    )
+    return <CheckoutForm amount={selectedKit.price} />;
   }
 
   return (
     <div className="min-h-screen bg-gray-50">
-
       {/* Hero Section */}
-      <div className="relative py-24 sm:pt-2 ">
+      <div className="relative py-24 sm:pt-2">
         <Navbar />
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute inset-0" />
           <Image
             src="/iloveimg-converted/9.jpg"
             alt="Support background"
             fill
-            className="object-cover object-top "
+            className="object-cover object-top"
             priority
           />
-          <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors duration-300" />
+          <div className="absolute inset-0 bg-black/40" />
         </div>
         <div className="relative">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="text-center">
-              <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
-                Support Our Mission
+            <motion.div 
+              className="text-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl mb-6">
+                Business Kits
+                <span className="block text-2xl sm:text-3xl mt-4 font-medium text-white/90">
+                  Help Displaced Palestinians Build Sustainable Futures
+                </span>
               </h1>
-              <p className="mt-6 text-lg  leading-8 text-white/90 max-w-2xl mx-auto">
-                Choose a business kit to support Palestinian refugees in building sustainable futures. Each kit provides essential resources and tools for success.
+              <p className="mt-6 text-lg leading-8 text-white/90 max-w-3xl mx-auto">
+                At SafeGrow, we believe that rebuilding livelihoods starts with providing the right tools. 
+                Our Business Kits are designed to support displaced Palestinians in creating sustainable businesses, 
+                launching freelance careers, or recovering from displacement.
               </p>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
 
       {/* Business Kits */}
-      <div className="py-24 bg-white">
+      <div className="py-24 bg-gray-50">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-3 xl:grid-cols-3">
-            {kits.map((kit) => (
-              <div
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-gray-900">
+              Choose Your Impact
+              <span className="block mt-2 text-xl font-medium text-gray-600">
+                Three Business Kit Tiers
+              </span>
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+            {kits.map((kit, index) => (
+              <motion.div
                 key={kit.name}
-                className={`relative flex flex-col rounded-2xl border-4 ${kit.popular
-                    ? 'border-[#009688]'
-                    : 'border-gray-200'
-                  } p-8 transition-all duration-300 hover:shadow-lg`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className={`relative flex flex-col rounded-2xl border-4 ${
+                  kit.popular ? "border-[#009688]" : "border-gray-200"
+                } bg-white p-8 transition-all duration-300 hover:shadow-lg h-full`}
               >
                 {kit.popular && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2">
@@ -148,42 +125,71 @@ export default function Donation() {
                     </span>
                   </div>
                 )}
-                <div className="relative h-48 w-full mb-6 rounded-lg overflow-hidden">
-                  <Image
-                    src={kit.image}
-                    alt={kit.name}
-                    fill
-                    className="object-cover"
-                  />
+                <div className="flex flex-col flex-grow">
+                  <div className="relative h-48 w-full mb-6 rounded-lg overflow-hidden">
+                    <Image src={kit.image} alt={kit.name} fill className="object-cover" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900">{kit.name}</h3>
+                  <p className="mt-4 text-sm text-gray-600">{kit.description}</p>
+                  <div className="mt-6 text-3xl font-bold text-gray-900">
+                    ${kit.price}
+                    <span className="text-base font-medium text-gray-500">/one-time</span>
+                  </div>
+                  <ul role="list" className="mt-8 space-y-3">
+                    {kit.features.map((feature) => (
+                      <li key={feature} className="flex items-start">
+                        <Check className="h-6 w-6 text-[#87CA2F] flex-shrink-0" />
+                        <p className="ml-3 text-sm text-gray-600">{feature}</p>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-6 p-4 bg-gray-50 rounded-xl">
+                    <h4 className="font-medium text-gray-900 mb-2">Impact</h4>
+                    <p className="text-sm text-gray-600">{kit.impact}</p>
+                  </div>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900">{kit.name}</h3>
-                <p className="mt-4 text-sm text-gray-600">{kit.description}</p>
-                <div className="mt-6 text-3xl font-bold text-gray-900">
-                  ${kit.price}
-                  <span className="text-base font-medium text-gray-500">/one-time</span>
-                </div>
-                <ul role="list" className="mt-8 space-y-3">
-                  {kit.features.map((feature) => (
-                    <li key={feature} className="flex items-start">
-                      <div className="flex-shrink-0">
-                        <Check className="h-6 w-6 text-[#87CA2F]" />
-                      </div>
-                      <p className="ml-3 text-sm text-gray-600">{feature}</p>
-                    </li>
-                  ))}
-                </ul>
                 <button
                   onClick={() => handleDonate(kit)}
-                  className={`mt-8 w-full rounded-lg px-4 py-4 text-center text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-2 ${kit.popular
-                      ? 'bg-[#87CA2F] text-white hover:bg-[#87CA2F]/90'
-                      : 'bg-[#009688] text-white hover:bg-[#009688]/90'
-                    }`}
+                  className={`mt-8 w-full rounded-lg px-4 py-4 text-center text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-2 ${
+                    kit.popular
+                      ? "bg-[#87CA2F] text-white hover:bg-[#87CA2F]/90"
+                      : "bg-[#009688] text-white hover:bg-[#009688]/90"
+                  }`}
                 >
                   Get {kit.name}
                   <ArrowRight className="h-4 w-4" />
                 </button>
-              </div>
+              </motion.div>
             ))}
+          </div>
+        </div>
+      </div>
+      
+
+      {/* Questions Section */}
+      <div className="bg-white py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl font-bold text-gray-900 mb-8">Have Questions?</h2>
+            <p className="text-lg text-gray-600 mb-8">
+              If you have any questions or need more details, don't hesitate to reach out. We're happy to help!
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#009688] text-white rounded-lg hover:bg-[#009688]/90 transition-colors"
+              >
+                <Mail className="w-5 h-5" />
+                Contact Us
+              </Link>
+              <Link
+                href="/about"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gray-100 text-gray-900 rounded-lg hover:bg-gray-200 transition-colors"
+              >
+                Learn More About SafeGrow
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </div>
           </div>
         </div>
       </div>

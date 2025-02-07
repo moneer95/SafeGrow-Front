@@ -122,12 +122,6 @@ const ContactUs = () => {
           {...fadeIn}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <div className="inline-flex items-center gap-2 text-gray-600">
-            <MapPin className="w-5 h-5" />
-            <span className="text-lg">
-              SafeGrow Office: 123 Al Nasr Road, Cairo, Egypt
-            </span>
-          </div>
         </motion.div>
       </div>
     </section>

@@ -13,7 +13,19 @@ const stories = [
     id: 1,
     name: "Zain Spices: Honoring Palestinian Heritage Through Flavor",
     description:
-      "Abdelrahman fled Gaza in May 2024 after enduring unimaginable hardship. With SafeGrow's support, he founded Zain Spices, bringing authentic Palestinian flavors to Cairo while creating a sustainable livelihood for his family.",
+      `Abdelrahman fled Gaza in May 2024 after enduring months of unimaginable hardship. He lost his parents, siblings, and his home to the ongoing genocide, leaving with his wife and two young children to protect what remained of his family. Despite this immense tragedy, Abdelrahman carried with him a deep sense of resilience—and a vision for rebuilding his life through his culture’s rich traditions.
+      In Gaza, Palestinians have a centuries-old history of spice making, tracing back to their role as a vibrant trading hub along the Silk Road. Inspired by this heritage and recognizing a gap in the Egyptian market for fresh, high-quality, and flavorful spices, Abdelrahman founded Zain Spices, named after his youngest son. His mission was clear: to bring the authentic flavors of Palestinian spice culture to Cairo while creating a sustainable livelihood for his family.
+      Crafting Excellence with SafeGrow’s Support
+
+      Through SafeBuild, SafeGrow funded two essential pieces of equipment for Zain Spices: a roasting machine to enhance the natural flavors of cloves and spices, and a large-scale 10-kilogram grinder for producing finely ground, rich spice blends. With these tools, Abdelrahman has perfected the art of roasting and grinding whole spices, delivering a product that is both all-natural and bursting with authentic flavor.
+      SafeGrow also supported Abdelrahman through SafeRevive, connecting him with local organic supermarket RDNA. This connection allowed him to showcase his products at RDNA’s annual Christmas market, where his spices were met with overwhelming praise. Customers were impressed by the quality, aroma, and unique offerings of Zain Spices, including his traditional Palestinian blends like Gazawi Dukka and Za’atar.
+      A Growing Business with Big Dreams
+
+      Since joining SafeGrow, Abdelrahman has scaled production and expanded his customer base, reaching individuals who appreciate the craftsmanship and heritage behind his products. Zain Spices now boasts an impressive lineup of 36 blends, including innovative creations like Thai Spice, Masala Spice, Seven Spices, Fish Seasoning, Healthy Indomie, and more.
+      Abdelrahman dreams of growing his business further and hiring a team of displaced Palestinians, offering them an opportunity to rebuild their lives through meaningful work. His story is one of perseverance, cultural pride, and a steadfast commitment to supporting others in his community.
+      Building the Future, One Spice at a Time
+      Through Zain Spices, Abdelrahman has not only reclaimed his livelihood but also created a bridge between his heritage and his future. His work stands as a testament to the power of resilience and the profound impact of SafeGrow’s mission to empower displaced Palestinians.
+      `,
     img: "/iloveimg-converted/10.jpg",
     color: "#87CA2F"
   },

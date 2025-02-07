@@ -128,10 +128,6 @@ const Footer = () => {
             <h3 className="text-lg font-semibold text-white">Contact Us</h3>
             <ul className="space-y-3">
               <li className="flex items-center space-x-3">
-                <MapPin className="w-5 h-5 text-[#009688]" />
-                <span>Cairo, Egypt</span>
-              </li>
-              <li className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-[#009688]" />
                 <span>+20 123 456 7890</span>
               </li>

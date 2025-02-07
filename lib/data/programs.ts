@@ -15,11 +15,7 @@ export const programs = [
         "Business planning support",
         "Local market insights"
       ],
-      gallery: [
-        "https://images.unsplash.com/photo-1593113598332-cd288d649433?w=800&q=80",
-        "https://images.unsplash.com/photo-1604881991720-f91add269bed?w=800&q=80",
-        "https://images.unsplash.com/photo-1577495508326-19a1b3cf65b7?w=800&q=80"
-      ]
+      gallery: ["/iloveimg-converted/1.jpg", "/iloveimg-converted/2.jpg", "/iloveimg-converted/3.jpg", "/iloveimg-converted/5.jpg", "/iloveimg-converted/10.jpg", "/iloveimg-converted/6.jpg"]
     },
     {
       id: "safeconnect",
@@ -37,11 +33,7 @@ export const programs = [
         "Online presence building",
         "Freelance platform guidance"
       ],
-      gallery: [
-        "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=800&q=80",
-        "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80",
-        "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&q=80"
-      ]
+      gallery: ["/iloveimg-converted/20.jpg", "/iloveimg-converted/19.jpg", "/iloveimg-converted/22.jpg", "/iloveimg-converted/16.jpg", "/iloveimg-converted/24.jpg", "/iloveimg-converted/28.jpg"]
     },
     {
       id: "saferevive",
@@ -59,11 +51,7 @@ export const programs = [
         "Marketing skills development",
         "Business growth guidance"
       ],
-      gallery: [
-        "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80",
-        "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80",
-        "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=80"
-      ]
+      gallery: ["/iloveimg-converted/4.jpg", "/iloveimg-converted/7.jpg"]
     }
   ];
   
