@@ -13,8 +13,8 @@ export const photographers: Artist[] = [
         price: 175,
         sizes: ["12\"x16\"", "16\"x20\"", "20\"x24\"", "24\"x36\""],
         images: [
-            "/shop-photos/olive-women.jpg", 
             "/shop-photos/gaza-destroyed.jpg", 
+            "/shop-photos/olive-women.jpg", 
             "/shop-photos/kids-wheel.jpg", 
             "/shop-photos/night-light.jpg", 
             "/shop-photos/olive-picking.jpg", 

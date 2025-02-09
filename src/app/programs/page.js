@@ -7,6 +7,7 @@ import CommitmentSection from "../../components/programs/CommitmentSection";
 import SafeConnectJobs from "../../components/programs/SafeConnectJobs";
 import { programs, commitments } from "../../../lib/data/programs";
 import Navbar from "../../components/Navbar";
+import StoryActions from "../../components/StoryActions";
 
 const Programs = () => {
   const [activeProgram, setActiveProgram] = useState(null);
@@ -107,6 +108,10 @@ const Programs = () => {
                     }}
                   />
                   {selectedProgram.id === "safeconnect" && <SafeConnectJobs />}
+
+                  {/* Action Srction */}
+                  <StoryActions />
+
                   <div className="mt-12">
                     <CommitmentSection commitments={commitments} />
                   </div>

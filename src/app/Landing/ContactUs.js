@@ -19,8 +19,7 @@ const ContactUs = () => {
       image: "/Grad1.jpg",
       color: "#009688",
       contact: [
-        { icon: Mail, text: "donors@safegrow.org" },
-        { icon: Phone, text: "+20 123 456 789" }
+        { icon: Mail, text: "info@safe-grow.com" },
       ]
     },
     {
@@ -29,8 +28,7 @@ const ContactUs = () => {
       image: "/Grad2.webp",
       color: "#00796B",
       contact: [
-        { icon: Mail, text: "support@safegrow.org" },
-        { icon: Phone, text: "+20 987 654 321" }
+        { icon: Mail, text: "info@safe-grow.com" },
       ]
     }
   ];

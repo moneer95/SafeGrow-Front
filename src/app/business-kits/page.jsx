@@ -18,7 +18,7 @@ const kits = [
       "Mentorship to guide them in the early stages of their business"
     ],
     impact: "Help create income-generating opportunities for displaced Palestinians and preserve cultural skills and traditions.",
-    image: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&auto=format&fit=crop&q=60"
+    image: "/kit-photos/b1-kit.jpeg"
   },
   {
     name: "Freelancer & Online Business Kit",
@@ -30,7 +30,7 @@ const kits = [
       "Mentorship from industry professionals"
     ],
     impact: "Empower displaced Palestinians to tap into the global digital economy and build sustainable freelance careers.",
-    image: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=800&auto=format&fit=crop&q=60",
+    image: "/kit-photos/b2-kit.jpeg",
     popular: true
   },
   {
@@ -42,7 +42,7 @@ const kits = [
       "Business development support and mentorship for scaling"
     ],
     impact: "Help displaced Palestinians launch larger-scale businesses, creating long-term income and employment opportunities.",
-    image: "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=800&auto=format&fit=crop&q=60"
+    image: "/kit-photos/b3-kit.jpeg"
   }
 ];
 

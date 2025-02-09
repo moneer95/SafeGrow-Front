@@ -25,13 +25,19 @@ export async function POST(req) {
             unit_amount: body.amount * 100, // Amount in cents (e.g., $10 becomes 1000 cents)
           },
           quantity: 1,
+          adjustable_quantity: {
+            enabled: true,
+            minimum: 1, // Minimum quantity allowed
+            maximum: 100, // Optional: Set a max limit
+          },
+    
         },
       ],
       mode: 'payment',
       return_url: `https://example.com/return?session_id={CHECKOUT_SESSION_ID}`,
       tax_id_collection: {
         enabled: true,
-      },      
+      }, 
     });
 
     return new Response(JSON.stringify({ clientSecret: session.client_secret }), {

@@ -4,6 +4,8 @@ import {
   EmbeddedCheckoutProvider,
   EmbeddedCheckout
 } from '@stripe/react-stripe-js';
+import Navbar from './Navbar';
+import Footer from './Footer';
 
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
@@ -26,6 +28,7 @@ export default function CheckoutForm({amount}){
     
       return (
         <div id="checkout">
+          <Navbar darkMode />
           <EmbeddedCheckoutProvider
             stripe={stripePromise}
             options={options}

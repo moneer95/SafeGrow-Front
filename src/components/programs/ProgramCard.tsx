@@ -102,19 +102,16 @@ export default function ProgramCard({
         </div>
 
         {/* Contact Card */}
-        <div className="bg-white rounded-xl p-6 shadow-lg">
-          <h3 className="text-xl font-semibold mb-4">Program Application</h3>
+        <div className="bg-white flex items-center justify-between rounded-xl p-6 shadow-lg">
+          <h3 className="text-xl font-semibold">Program Application</h3>
           <div className="flex items-center justify-between">
-            <div>
-              <p className="text-gray-600">Program Supervisor</p>
-              <p className="font-medium text-gray-900">{program.supervisor}</p>
-            </div>
             <a
-              href={`mailto:${program.email}`}
+              href={`http://44.201.121.211/safegrow-new-case`}
+              target="_blank"
               className={`flex items-center space-x-2 px-4 py-2 rounded-lg ${program.bgColor} ${program.color} hover:opacity-90 transition-opacity`}
             >
               <Send className="w-5 h-5" />
-              <span>Sumbit your Application !</span>
+              <span>Submit your Application !</span>
             </a>
           </div>
         </div>

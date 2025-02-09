@@ -32,7 +32,7 @@ const GetInvolved = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/Donation">
+              <Link href="http://44.201.121.211/safegrow-new-case?new=1">
                 <motion.button
                   className="px-10 py-3 bg-gray-50 text-[#009688] font-semibold rounded-md hover:bg-gray-100 hover:text-[#009688] flex items-center justify-center w-full sm:w-auto transition-colors duration-300"
                   whileHover={{ scale: 1.02 }}
@@ -43,7 +43,7 @@ const GetInvolved = () => {
                 </motion.button>
               </Link>
 
-              <Link href="/Donation">
+              <Link href="/business-kits">
                 <motion.button
                   className="px-10 py-3 bg-[#009688] text-white font-semibold rounded-md hover:bg-[#009688] flex items-center justify-center w-full sm:w-auto transition-colors duration-300"
                   whileHover={{ scale: 1.02 }}
