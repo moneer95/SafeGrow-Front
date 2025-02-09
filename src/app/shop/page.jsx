@@ -3,43 +3,8 @@
 import Navbar from "../../components/Navbar";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { HeartHandshake, Image as ImageIcon, Palette } from "lucide-react";
-
-const products = [
-  {
-    id: 1,
-    name: 'Photography Print',
-    href: '/shop/1',
-    price: '$175',
-    description: 'High-quality digital photography print created by one of our talented professional photographers, capturing the essence of Palestinian culture and life.',
-    category: 'Photography',
-    icon: ImageIcon,
-    imageSrc: 'https://www.maxfosterphotography.com/images/xl/Rise-Above.webp',
-    imageAlt: 'Professional photograph showing urban landscape.',
-  },
-  {
-    id: 2,
-    name: 'Handwoven Textile Art',
-    href: '/shop/2',
-    price: '$350',
-    description: 'A beautifully handcrafted piece of textile art, showcasing the artistry and skills of our Palestinian artisans using traditional techniques.',
-    category: 'Textile Arts',
-    icon: Palette,
-    imageSrc: 'https://oxfordasiantextilegroup.wordpress.com/wp-content/uploads/2018/08/20183719_chest_panel.jpg?w=768',
-    imageAlt: 'Handwoven textile piece with intricate patterns.',
-  },
-  {
-    id: 3,
-    name: 'Traditional Craft Piece',
-    href: '/shop/3',
-    price: '$250',
-    description: 'A unique, custom-made craft piece, carefully designed and created with traditional Palestinian artistry, representing cultural heritage.',
-    category: 'Artisan Crafts',
-    icon: HeartHandshake,
-    imageSrc: 'https://media.istockphoto.com/id/1346661870/photo/baskets-traditional-handicraft-products.jpg?s=612x612&w=0&k=20&c=CNV8ONrT8EoZFMPpdkHNOPqk2vTbLitB9n9FfmsLA88=',
-    imageAlt: 'Handcrafted artisan piece showing traditional design.',
-  },
-];
+import { HeartHandshake } from "lucide-react";
+import { products } from "../../../lib/data/shop";
 
 export default function Shop() {
   return (
@@ -107,7 +72,7 @@ export default function Shop() {
                 </h3>
                 <p className="flex-1 text-base text-gray-500">{product.description}</p>
                 <div className="flex items-center justify-between">
-                  <p className="text-2xl font-bold text-gray-900">{product.price}</p>
+                  <p className="text-2xl font-bold text-gray-900">${product.price}</p>
                   <button className="text-[#009688] font-medium hover:text-[#007a6c] transition-colors">
                     View Details →
                   </button>

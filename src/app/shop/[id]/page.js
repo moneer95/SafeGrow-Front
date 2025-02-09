@@ -3,30 +3,28 @@
 import { useState } from "react";
 import { useParams } from "next/navigation";
 import Navbar from "../../../components/Navbar";
-import { ArrowLeft, HeartHandshake, Image as ImageIcon, Palette, Heart, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowLeft, Heart, ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import WatermarkedImage from "../../../components/WatermarkedImage";
-import { photographers } from "../../../../lib/data/photography";
+import { products } from "../../../../lib/data/shop";
 
 export default function ProductDetails() {
   const params = useParams();
   const [selectedSize, setSelectedSize] = useState("");
   const [additionalDonation, setAdditionalDonation] = useState(0);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [selectedArtist, setSelectedArtist] = useState(0);
   
-  const artist = photographers[selectedArtist];
-  const portfolio = artist?.portfolio[0];
+  const product = products.find(p => p.id === Number(params.id));
 
-  if (!artist || !portfolio) {
+  if (!product) {
     return (
       <div className="min-h-screen bg-white">
         <Navbar darkMode={true} />
         <div className="max-w-2xl mx-auto px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl">
           <div className="text-center">
-            <h2 className="text-2xl font-bold text-gray-900">Artist not found</h2>
-            <p className="mt-4 text-gray-500">The artist you're looking for doesn't exist.</p>
+            <h2 className="text-2xl font-bold text-gray-900">Product not found</h2>
+            <p className="mt-4 text-gray-500">The product you're looking for doesn't exist.</p>
             <Link 
               href="/shop"
               className="mt-8 inline-flex items-center text-[#009688] hover:text-[#007a6c] transition-colors"
@@ -41,17 +39,20 @@ export default function ProductDetails() {
   }
 
   const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % portfolio.images.length);
+    setCurrentImageIndex((prev) => 
+      (prev + 1) % (product.additionalImages.length + 1)
+    );
   };
 
   const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + portfolio.images.length) % portfolio.images.length);
+    setCurrentImageIndex((prev) => 
+      (prev - 1 + product.additionalImages.length + 1) % (product.additionalImages.length + 1)
+    );
   };
 
-  const selectArtist = (index) => {
-    setSelectedArtist(index);
-    setCurrentImageIndex(0);
-  };
+  const currentImage = currentImageIndex === 0 
+    ? product.imageSrc 
+    : product.additionalImages[currentImageIndex - 1];
 
   return (
     <div className="bg-white">
@@ -76,9 +77,9 @@ export default function ProductDetails() {
             {/* Main Image */}
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg">
               <WatermarkedImage
-                src={portfolio.images[currentImageIndex]}
-                alt={`${portfolio.title} by ${artist.name}`}
-                watermarkText={`©SafeGrow`}
+                src={currentImage}
+                alt={`${product.name} by ${product.artist.name}`}
+                watermarkText={`© ${product.artist.name} - SafeGrow`}
                 className="rounded-2xl"
               />
               
@@ -101,43 +102,35 @@ export default function ProductDetails() {
 
             {/* Thumbnail Grid */}
             <div className="grid grid-cols-4 gap-4">
-              {portfolio.images.map((image, index) => (
+              <button
+                onClick={() => setCurrentImageIndex(0)}
+                className={`relative aspect-square rounded-lg overflow-hidden ${
+                  currentImageIndex === 0 ? "ring-2 ring-[#009688]" : ""
+                }`}
+              >
+                <WatermarkedImage
+                  src={product.imageSrc}
+                  alt={`${product.name} main image`}
+                  watermarkText={`© SafeGrow`}
+                  className="rounded-lg"
+                />
+              </button>
+              {product.additionalImages.map((image, index) => (
                 <button
                   key={index}
-                  onClick={() => setCurrentImageIndex(index)}
+                  onClick={() => setCurrentImageIndex(index + 1)}
                   className={`relative aspect-square rounded-lg overflow-hidden ${
-                    currentImageIndex === index ? "ring-2 ring-[#009688]" : ""
+                    currentImageIndex === index + 1 ? "ring-2 ring-[#009688]" : ""
                   }`}
                 >
                   <WatermarkedImage
                     src={image}
-                    alt={`Thumbnail ${index + 1}`}
+                    alt={`${product.name} view ${index + 1}`}
                     watermarkText={`© SafeGrow`}
                     className="rounded-lg"
                   />
                 </button>
               ))}
-            </div>
-
-            {/* Artist Selection */}
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-gray-900">More Artists</h3>
-              <div className="grid grid-cols-2 gap-4">
-                {photographers.map((photographer, index) => (
-                  <button
-                    key={photographer.id}
-                    onClick={() => selectArtist(index)}
-                    className={`p-4 rounded-xl text-left transition-all duration-300 ${
-                      selectedArtist === index
-                        ? "bg-[#009688]/10 ring-2 ring-[#009688]"
-                        : "bg-gray-50 hover:bg-gray-100"
-                    }`}
-                  >
-                    <h4 className="font-medium text-gray-900">{photographer.name}</h4>
-                    <p className="text-sm text-gray-600 line-clamp-2">{photographer.bio}</p>
-                  </button>
-                ))}
-              </div>
             </div>
           </motion.div>
 
@@ -149,43 +142,56 @@ export default function ProductDetails() {
             className="lg:pl-8"
           >
             <div className="flex items-center gap-2 mb-4">
-              <ImageIcon className="w-5 h-5 text-[#009688]" />
-              <span className="text-sm font-medium text-[#009688]">Photography</span>
+              <product.icon className="w-5 h-5 text-[#009688]" />
+              <span className="text-sm font-medium text-[#009688]">{product.category}</span>
             </div>
 
-            <h1 className="text-3xl font-bold tracking-tight text-gray-900">{portfolio.title}</h1>
+            <h1 className="text-3xl font-bold tracking-tight text-gray-900">{product.name}</h1>
             <div className="mt-3">
-              <p className="text-3xl tracking-tight text-gray-900">${portfolio.price}</p>
+              <p className="text-3xl tracking-tight text-gray-900">From ${product.price}</p>
             </div>
 
             <div className="mt-6">
-              <p className="text-lg text-gray-700 leading-relaxed">{portfolio.description}</p>
+              <p className="text-lg text-gray-700 leading-relaxed">{product.longDescription}</p>
+            </div>
+
+            {/* Features */}
+            <div className="mt-8">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">Features</h3>
+              <ul className="space-y-2">
+                {product.features.map((feature, index) => (
+                  <li key={index} className="flex items-center gap-2 text-gray-600">
+                    <span className="w-1.5 h-1.5 bg-[#009688] rounded-full" />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
             </div>
 
             {/* Artist Info */}
             <div className="mt-8 bg-gray-50 rounded-xl p-6">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">Artist</h3>
-              <h4 className="text-[#009688] font-medium mb-2">{artist.name}</h4>
-              <p className="text-gray-600">{artist.bio}</p>
+              <h4 className="text-[#009688] font-medium mb-2">{product.artist.name}</h4>
+              <p className="text-gray-600">{product.artist.bio}</p>
             </div>
 
             {/* Size Selection */}
             <div className="mt-8">
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Size</h3>
               <div className="flex flex-wrap gap-3">
-                {portfolio.sizes.map((size) => (
+                {product.sizes.map((size) => (
                   <button
-                    key={size}
-                    onClick={() => setSelectedSize(size)}
+                    key={size.name}
+                    onClick={() => setSelectedSize(size.name)}
                     className={`
                       px-4 py-2 text-sm font-medium rounded-lg border-2 transition-all duration-300
-                      ${selectedSize === size
+                      ${selectedSize === size.name
                         ? "border-[#009688] text-[#009688] bg-[#009688]/5"
                         : "border-gray-200 text-gray-700 hover:border-gray-300"
                       }
                     `}
                   >
-                    {size}
+                    {size.name} - ${size.price}
                   </button>
                 ))}
               </div>
@@ -196,7 +202,7 @@ export default function ProductDetails() {
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Additional Support</h3>
               <div className="bg-gray-50 rounded-xl p-6">
                 <p className="text-gray-600 mb-4">
-                  Your purchase supports {artist.name}'s work and contributes to the SafeConnect program, 
+                  Your purchase supports {product.artist.name}'s work and contributes to the SafeConnect program, 
                   helping other artists establish their careers.
                 </p>
                 <div className="flex flex-wrap gap-3">
@@ -222,7 +228,7 @@ export default function ProductDetails() {
             <button
               className="mt-8 flex w-full items-center justify-center rounded-xl border border-transparent bg-[#009688] px-8 py-4 text-lg font-medium text-white hover:bg-[#007a6c] focus:outline-none focus:ring-2 focus:ring-[#009688] focus:ring-offset-2 transition-colors duration-300"
             >
-              Comming Soon
+              Add to cart
               <Heart className="w-5 h-5 ml-2" />
             </button>
           </motion.div>
