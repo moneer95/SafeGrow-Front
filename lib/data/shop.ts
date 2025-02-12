@@ -42,16 +42,12 @@ export const products: Product[] = [
 Perfect for young creative minds, this printable coloring book offers hours of fun while teaching children about the importance of cultural preservation. Each page highlights the beauty of Palestine and its rich history, providing both an educational and artistic experience. Once purchased, you can print the pages as many times as you like for endless creativity.
 By purchasing this book, you’re supporting a young Palestinian artist while also contributing to SafeGrow’s programs that help displaced Palestinians rebuild their lives. Your purchase empowers the artist to continue her creative journey and supports SafeGrow's mission of offering mentorship, resources, and opportunities for a brighter future.
 `,
-    category: 'Textile Arts',
+    category: 'Coloring',
     icon: Palette,
     imageSrc: '/coloring-book1.png',
     imageAlt: 'Handwoven textile piece with intricate patterns.',
     features: [
-      'Traditional handweaving techniques',
-      'Natural materials',
       'Unique patterns',
-      'Fair trade certified',
-      'Artisan signed'
     ],
     sizes: [
       { name: '2\'x3\'', price: 20 },
@@ -60,8 +56,8 @@ By purchasing this book, you’re supporting a young Palestinian artist while al
       '/shop-photos/coloring-2.png',
     ],
     artist: {
-      name: 'Layla Hassan',
-      bio: 'A master weaver with 20 years of experience in traditional Palestinian textile arts.',
+      name: 'Lujain',
+      bio: 'talented professional painter.',
       portfolio: 'https://example.com/layla'
     }
   },
