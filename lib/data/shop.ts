@@ -61,6 +61,7 @@ By purchasing this book, you’re supporting a young Palestinian artist while al
       { name: '2\'x3\'', price: 20 },
     ],
     additionalImages: [
+      '/shop-photos/coloring-2.png',
     ],
     artist: {
       name: 'Layla Hassan',
@@ -79,7 +80,7 @@ This cookbook not only shares delicious recipes but also highlights the stories 
 By purchasing this cookbook, you’re supporting the two Palestinian women who wrote and designed it, while also contributing to SafeGrow’s mission. Proceeds from the book will help fund SafeGrow’s programs that empower displaced Palestinians with the resources, mentorship, and opportunities they need to rebuild their lives and create sustainable futures.`,
     category: 'Cook Books',
     icon: Book,
-    imageSrc: 'https://media.istockphoto.com/id/1346661870/photo/baskets-traditional-handicraft-products.jpg?s=612x612&w=0&k=20&c=CNV8ONrT8EoZFMPpdkHNOPqk2vTbLitB9n9FfmsLA88=',
+    imageSrc: 'coloring-2.png',
     imageAlt: 'Sample Page of the Cooking Book',
     features: [
       'Traditional crafting techniques',
