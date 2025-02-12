@@ -11,7 +11,7 @@ export const products: Product[] = [
     longDescription: `Our Photography Prints collection features high-quality digital photographs captured by talented Palestinian photographers. These prints are not just pieces of art; they are powerful expressions of the Palestinian experience, capturing moments of resilience, beauty, and culture amidst displacement. When you purchase a photography print from SafeGrow, you’re supporting a local Palestinian artist and helping to provide essential resources for displaced individuals striving to rebuild their lives. Each print tells a story—one that reflects the strength, creativity, and perseverance of the people of Palestine. This is more than a purchase; it’s a way to keep their stories alive and contribute to their future.`,
     category: 'Photography',
     icon: Camera,
-    imageSrc: 'https://www.maxfosterphotography.com/images/xl/Rise-Above.webp',
+    imageSrc: '/shop-photos/olive-women.jpg',
     imageAlt: 'Professional photograph showing urban landscape.',
     features: [
       'Limited edition',
@@ -44,7 +44,7 @@ By purchasing this book, you’re supporting a young Palestinian artist while al
 `,
     category: 'Coloring',
     icon: Palette,
-    imageSrc: '/coloring-book1.png',
+    imageSrc: '/colorin-book-cover.png',
     imageAlt: 'Handwoven textile piece with intricate patterns.',
     features: [
       'Unique patterns',
@@ -72,14 +72,10 @@ This cookbook not only shares delicious recipes but also highlights the stories 
 By purchasing this cookbook, you’re supporting the two Palestinian women who wrote and designed it, while also contributing to SafeGrow’s mission. Proceeds from the book will help fund SafeGrow’s programs that empower displaced Palestinians with the resources, mentorship, and opportunities they need to rebuild their lives and create sustainable futures.`,
     category: 'Cook Books',
     icon: Book,
-    imageSrc: 'coloring-2.png',
+    imageSrc: '/cook-book.png',
     imageAlt: 'Sample Page of the Cooking Book',
     features: [
-      'Traditional crafting techniques',
-      'Premium materials',
-      'Custom designs available',
-      'Artisan signed',
-      'Certificate of authenticity'
+      'Original Plaestinian Traditional Recipes'
     ],
     sizes: [
       { name: 'Small', price: 35 },
@@ -87,7 +83,7 @@ By purchasing this cookbook, you’re supporting the two Palestinian women who w
     additionalImages: [
     ],
     artist: {
-      name: 'Two Palestinian Womens',
+      name: 'Layla Hassan and Hadeel Jameel',
       bio: 'A third-generation craftsman specializing in traditional Palestinian decorative arts.',
       portfolio: 'https://example.com/omar'
     }
