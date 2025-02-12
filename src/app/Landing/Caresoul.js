@@ -178,7 +178,7 @@ const Carousel = () => {
             Inspired by these stories?
           </h3>
           <Link
-            href="/Donation"
+            href="/business-kits"
             className="inline-flex items-center text-[#86CA2F] hover:text-[#6da02b] font-semibold transition-colors"
           >
             Find out how you can help

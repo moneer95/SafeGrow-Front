@@ -28,7 +28,7 @@ const actions = [
     icon: Users,
     title: "Hire a Palestinian",
     description: "Connect with skilled workers through SafeGrow and bring their talent into your business.",
-    href: "/programs#safeconnect",
+    href: "https://dash.safe-grow.com/employer-job-posting?new=1",
     color: "bg-yellow-50",
     iconColor: "text-[#F9B043]",
     hoverColor: "hover:bg-yellow-100"
@@ -37,7 +37,7 @@ const actions = [
     icon: HeartHandshake,
     title: "Become a Mentor",
     description: "Share your expertise in business, freelancing, or digital skills to help someone succeed.",
-    href: "/contact",
+    href: "https://dash.safe-grow.com/mentor-application?new=1",
     color: "bg-blue-50",
     iconColor: "text-blue-600",
     hoverColor: "hover:bg-blue-100"

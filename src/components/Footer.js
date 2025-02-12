@@ -27,9 +27,7 @@ const Footer = () => {
 
   const socialLinks = [
     { icon: Facebook, href: 'https://facebook.com' },
-    { icon: Twitter, href: 'https://twitter.com' },
-    { icon: Instagram, href: 'https://instagram.com' },
-    { icon: Youtube, href: 'https://youtube.com' },
+    { icon: Instagram, href: 'https://www.instagram.com/safegrow_org?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==' },
   ];
 
   return (
