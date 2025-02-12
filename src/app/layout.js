@@ -1,6 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import Footer from "../components/Footer";
+import Head from "next/head";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -16,6 +17,10 @@ const geistMono = localFont({
 export const metadata = {
   title: "Safe Grow",
   description: "Empowering Palestinian Refugees to Build Sustainable Futures",
+  icons: {
+    icon: "/favicon.ico",
+  },
+
 };
 
 export default function RootLayout({ children }) {
