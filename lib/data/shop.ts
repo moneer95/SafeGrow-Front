@@ -14,11 +14,7 @@ export const products: Product[] = [
     imageSrc: 'https://www.maxfosterphotography.com/images/xl/Rise-Above.webp',
     imageAlt: 'Professional photograph showing urban landscape.',
     features: [
-      'Museum-quality printing',
-      'Archival-grade paper',
       'Limited edition',
-      'Signed by artist',
-      'Certificate of authenticity'
     ],
     sizes: [
       { name: '12"x16"', price: 60 },
