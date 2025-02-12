@@ -31,35 +31,5 @@ export const jobs: Job[] = [
       whatsapp: "+20 123 456 7890",
       email: "tech@techco.com"
     }
-  },
-  {
-    id: 2,
-    title: "Photographer",
-    type: "Freelance",
-    company: "Creative Studios",
-    location: "Cairo, Egypt",
-    icon: Camera,
-    description: "Seeking talented photographers for various commercial and artistic projects. Portfolio required.",
-    requirements: ["Professional portfolio", "Own equipment", "Commercial photography experience"],
-    salary: "Project-based",
-    contact: {
-      whatsapp: "+20 123 456 7891",
-      email: "creative@studios.com"
-    }
-  },
-  {
-    id: 3,
-    title: "Graphic Designer",
-    type: "Remote",
-    company: "Design Hub",
-    location: "Remote (MENA)",
-    icon: Palette,
-    description: "Join our creative team as a graphic designer. Work on exciting branding and digital design projects.",
-    requirements: ["Adobe Creative Suite", "UI/UX knowledge", "Portfolio required"],
-    salary: "$2500-3500/month",
-    contact: {
-      whatsapp: "+20 123 456 7892",
-      email: "jobs@designhub.com"
-    }
   }
 ];

@@ -102,7 +102,7 @@ export default function ProgramCard({
         </div>
 
         {/* Contact Card */}
-        <div className="bg-white flex items-center justify-between rounded-xl p-6 shadow-lg">
+        {/* <div className="bg-white flex items-center justify-between rounded-xl p-6 shadow-lg">
           <h3 className="text-xl font-semibold">Program Application</h3>
           <div className="flex items-center justify-between">
             <a
@@ -114,7 +114,7 @@ export default function ProgramCard({
               <span>Submit your Application !</span>
             </a>
           </div>
-        </div>
+        </div> */}
       </div>
     </motion.section>
   );

@@ -33,7 +33,7 @@ export const programs = [
         "Online presence building",
         "Freelance platform guidance"
       ],
-      gallery: ["/iloveimg-converted/20.jpg", "/iloveimg-converted/19.jpg", "/iloveimg-converted/22.jpg", "/iloveimg-converted/16.jpg", "/iloveimg-converted/24.jpg", "/iloveimg-converted/28.jpg"]
+      gallery: ["/iloveimg-converted/12.jpg", "/iloveimg-converted/14.jpg"]
     },
     {
       id: "saferevive",
