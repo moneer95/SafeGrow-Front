@@ -1,15 +1,41 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Briefcase, ExternalLink, X, Phone, Mail } from "lucide-react";
 import Link from "next/link";
-import { jobs } from "../../../lib/data/jobs";
+import { getJobs, Job } from "../../../lib/data/jobs";
+
 
 export default function SafeConnectJobs() {
     const [selectedJob, setSelectedJob] = useState(null);
+    
+    const [jobs, setJobs] = useState<Job[]>([]);
+    const [loading, setLoading] = useState(true);
 
+    
     const closeDialog = () => setSelectedJob(null);
+    
+    useEffect(() => {
+        async function fetchJobs() {
+          try {
+            const data = await getJobs();
+            console.log(data.length)
+            setJobs(data);
+          } catch (error) {
+            console.error("Error fetching jobs:", error);
+          } finally {
+            setLoading(false);
+          }
+        }
+    
+        fetchJobs();
+      }, []);
+    
+      if (loading) return <p>Loading jobs...</p>;
+    
+  
+
 
     return (
         <>
@@ -27,7 +53,7 @@ export default function SafeConnectJobs() {
                         </h3>
 
                         <div className="grid gap-6">
-                            {jobs.map((job) => (
+                            {jobs.length && jobs.map((job) => (
                                 <motion.div
                                     key={job.id}
                                     initial={{ opacity: 0, y: 10 }}
