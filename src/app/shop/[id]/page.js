@@ -228,7 +228,7 @@ export default function ProductDetails() {
             <button
               className="mt-8 flex w-full items-center justify-center rounded-xl border border-transparent bg-[#009688] px-8 py-4 text-lg font-medium text-white hover:bg-[#007a6c] focus:outline-none focus:ring-2 focus:ring-[#009688] focus:ring-offset-2 transition-colors duration-300"
             >
-              Commimng Soon
+              Coming Soon
               <Heart className="w-5 h-5 ml-2" />
             </button>
           </motion.div>
