@@ -3,97 +3,171 @@
 import Navbar from "../../components/Navbar";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { HeartHandshake } from "lucide-react";
-import { products } from "../../../lib/data/shop";
+import { Download, ArrowRight, HeartHandshake, CheckCircle } from "lucide-react";
+import { categories } from "../../../lib/data/shop";
 
 export default function Shop() {
   return (
     <div className="bg-white">
       <Navbar darkMode="true" />
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24">
-        {/* Hero Section */}
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <motion.h1 
-            className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl mb-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            Support Artisan Goods
-          </motion.h1>
-          <motion.p 
-            className="text-lg leading-relaxed text-gray-600 mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            Support local artisans and freelancers by purchasing their unique creations. Each item you buy not only supports the artisan who created it but also helps fund SafeGrow's programs.
-          </motion.p>
-          <motion.div 
-            className="bg-gray-50 rounded-xl p-6 text-left"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            <h2 className="text-lg font-semibold text-gray-900 mb-3">How It Works</h2>
-            <p className="text-gray-600">
-              Every purchase directly benefits the artisan, with a portion of the proceeds funding programs like SafeBuild, SafeConnect, and SafeRevive. You can also choose to contribute more during checkout to further support the program of your choice.
-            </p>
-          </motion.div>
+      
+      {/* Hero Section */}
+      <div className="relative py-24 sm:py-32 overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1469817805249-72b7df1c3c05?w=1200&q=80"
+            alt="Shop hero background"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/40" />
         </div>
 
-        {/* Products Grid */}
-        <div className="grid grid-cols-1 gap-y-8 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-3 lg:gap-x-8">
-          {products.map((product, index) => (
-            <motion.div
-              key={product.id}
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl">
+            <motion.h1 
+              className="text-4xl font-bold tracking-tight text-white sm:text-5xl mb-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 * (index + 3) }}
-              className="group relative flex flex-col overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300"
+              transition={{ duration: 0.6 }}
             >
-              <div className="aspect-[4/3] overflow-hidden bg-gray-200">
-                <img
-                  src={product.imageSrc}
-                  alt={product.imageAlt}
-                  className="h-full w-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                />
+              Digital Palestinian Art & Design
+              <span className="block mt-4 text-2xl font-medium text-white/90">
+                Support Artists, Receive Instant Downloads
+              </span>
+            </motion.h1>
+            
+            <motion.p 
+              className="mt-6 text-lg text-white/80 max-w-xl"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              Browse our collection of high-quality digital products created by talented Palestinian artists. 
+              From photography to design templates, every purchase directly supports the creator.
+            </motion.p>
+
+            <motion.div 
+              className="mt-8 flex items-center gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              <div className="flex items-center gap-2 text-white/90">
+                <Download className="w-5 h-5" />
+                <span>Instant Digital Delivery</span>
               </div>
-              <div className="flex flex-1 flex-col space-y-4 p-6">
-                <div className="flex items-center gap-2">
-                  <product.icon className="w-5 h-5 text-[#009688]" />
-                  <span className="text-sm font-medium text-[#009688]">{product.category}</span>
+              <div className="w-1 h-1 bg-white/30 rounded-full" />
+              <div className="text-white/90">Commercial License Available</div>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+
+      {/* Categories Section */}
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            Browse Categories
+          </h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Explore our curated collection of digital products, each designed to preserve and 
+            share Palestinian culture while supporting artists and creators.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {categories.map((category, index) => (
+            <motion.div
+              key={category.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+            >
+              <Link href={`/shop/category/${category.id}`}>
+                <div className={`group h-full rounded-2xl overflow-hidden ${category.bgColor} transition-all duration-300 hover:shadow-xl`}>
+                  {/* Image Section */}
+                  <div className="aspect-[4/3] relative overflow-hidden">
+                    <img
+                      src={category.image}
+                      alt={category.name}
+                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    
+                    {/* Category Icon */}
+                    <div className="absolute bottom-4 left-4 p-3 rounded-xl bg-white/90 backdrop-blur-sm">
+                      <category.icon className={`w-6 h-6 ${category.color}`} />
+                    </div>
+                  </div>
+
+                  {/* Content Section */}
+                  <div className="p-6">
+                    <h3 className={`text-2xl font-bold ${category.color} mb-2`}>
+                      {category.name}
+                    </h3>
+                    <p className="text-gray-600 mb-4">
+                      {category.description}
+                    </p>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2 text-gray-600">
+                        <Download className="w-4 h-4" />
+                        <span className="text-sm">Digital Download</span>
+                      </div>
+                      <div className={`flex items-center ${category.color} font-medium`}>
+                        View Products
+                        <ArrowRight className="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" />
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900">
-                  <Link href={product.href}>
-                    <span aria-hidden="true" className="absolute inset-0" />
-                    {product.name}
-                  </Link>
-                </h3>
-                <p className="flex-1 text-base text-gray-500">{product.description}</p>
-                <div className="flex items-center justify-between">
-                  <p className="text-2xl font-bold text-gray-900">${product.price}</p>
-                  <button className="text-[#009688] font-medium hover:text-[#007a6c] transition-colors">
-                    View Details →
-                  </button>
-                </div>
-              </div>
+              </Link>
             </motion.div>
           ))}
         </div>
 
-        {/* Support Info */}
-        <motion.div 
-          className="mt-24 max-w-3xl mx-auto text-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1.2 }}
-        >
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Customize Your Support</h2>
-          <p className="text-gray-600">
-            During checkout, you'll have the option to increase your purchase amount and select which SafeGrow program your additional contribution will support - whether that's helping a displaced Palestinian start a business, find freelance work, or rebuild a lost livelihood.
-          </p>
-        </motion.div>
+        {/* Features Section */}
+        <div className="mt-24 grid grid-cols-1 gap-8 md:grid-cols-3">
+          {[
+            {
+              title: "Instant Delivery",
+              description: "Receive your digital products immediately after purchase via email",
+              icon: Download
+            },
+            {
+              title: "Support Artists",
+              description: "Your purchase directly supports Palestinian artists and creators",
+              icon: HeartHandshake
+            },
+            {
+              title: "Quality Guaranteed",
+              description: "All products are carefully curated and quality checked",
+              icon: CheckCircle
+            }
+          ].map((feature, index) => (
+            <motion.div
+              key={feature.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
+              className="text-center p-6"
+            >
+              <div className="inline-flex p-3 rounded-xl bg-[#009688]/10 mb-4">
+                <feature.icon className="w-6 h-6 text-[#009688]" />
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                {feature.title}
+              </h3>
+              <p className="text-gray-600">
+                {feature.description}
+              </p>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </div>
   );

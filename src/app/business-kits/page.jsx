@@ -7,6 +7,7 @@ import Link from "next/link";
 import Navbar from "../../components/Navbar";
 import CheckoutForm from "../../components/CheckoutForm";
 import { motion } from "framer-motion";
+import PayForm from "../../components/MobCheckout"
 
 const kits = [
   {
@@ -46,16 +47,22 @@ const kits = [
   }
 ];
 
+
+
 export default function BusinessKits() {
   const [selectedKit, setSelectedKit] = useState(null);
+  const [isOpen, setIsOpen] = useState(true); // Open the popup by default
+
 
   const handleDonate = (kit) => {
     setSelectedKit(kit);
+    setIsOpen(true)
   };
 
-  if (selectedKit) {
-    return <CheckoutForm amount={selectedKit.price} />;
-  }
+  // if (selectedKit) {
+  //   return <PayForm amount={100} />
+  //   return <CheckoutForm amount={selectedKit.price} />;
+  // }
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -95,6 +102,8 @@ export default function BusinessKits() {
           </div>
         </div>
       </div>
+
+      { selectedKit && <PayForm amount={selectedKit.price} isOpen={isOpen} setIsOpen={setIsOpen} />}
 
       {/* Business Kits */}
       <div className="py-24 bg-gray-50">

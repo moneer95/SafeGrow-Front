@@ -11,11 +11,27 @@ export interface Artist {
   portfolio: string;
 }
 
+export interface Category {
+  id: string;
+  name: string;
+  description: string;
+  icon: typeof LucideIcon;
+  color: string;
+  bgColor: string;
+  image: string;
+}
+
+export interface CartItem extends Product {
+  quantity: number;
+  selectedSize?: string;
+}
+
 export interface Product {
   id: number;
   name: string;
   href: string;
   price: number;
+  categoryId: string;
   description: string;
   longDescription: string;
   category: string;

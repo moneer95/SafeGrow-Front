@@ -48,18 +48,18 @@ export async function getJobs(): Promise<Job[]> {
   const jobs: Job[] = result
   .filter((job: any) => job.status === "Posted")
   .map((job: any, index: number) => ({
-    id: index + 1, // or job.id if your data provides an id
-    title: job.job_title, // adjust to your actual field name
-    type: job.job_type,   // adjust if needed
-    company: job.company_name, // adjust to your doctype field
-    location: job.location, // adjust if needed
-    icon: Code, // you can decide how to assign an icon here
-    description: job.job_description, // adjust to your doctype field
+    id: index + 1, 
+    title: job.job_title, 
+    type: job.job_type,  
+    company: job.company_name, 
+    location: job.location, 
+    icon: Code, 
+    description: job.job_description, 
     requirements: job.skills_required ? job.skills_required.split(",") : [],
-    salary: job.salary_compensation, // adjust to your field name
+    salary: job.salary_compensation, 
     contact: {
-      whatsapp: job.phone_number, // adjust to your field name (or job.whatsapp if available)
-      email: job.contact_email,   // adjust accordingly
+      whatsapp: job.phone_number, 
+      email: job.contact_email,   
     },
   }));
 

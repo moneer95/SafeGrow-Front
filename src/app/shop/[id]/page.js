@@ -1,21 +1,47 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import Navbar from "../../../components/Navbar";
-import { ArrowLeft, Heart, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowLeft, Heart, ChevronLeft, ChevronRight, ShoppingCart, Plus, Minus } from "lucide-react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import WatermarkedImage from "../../../components/WatermarkedImage";
-import { products } from "../../../../lib/data/shop";
+import { getProducts } from "../../../../lib/data/shop";
+import { useCart } from "../../../../lib/hooks/useCart";
+import { toast } from "sonner";
 
 export default function ProductDetails() {
   const params = useParams();
   const [selectedSize, setSelectedSize] = useState("");
   const [additionalDonation, setAdditionalDonation] = useState(0);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   
-  const product = products.find(p => p.id === Number(params.id));
+  const { addItem } = useCart();
+
+
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchProducts() {
+      const fetchedProducts = await getProducts();
+      setProducts(fetchedProducts);
+      setLoading(false);
+    }
+
+    fetchProducts();
+  }, []);
+
+  const product = products?.find(p => p.id === params.id);
+
+  console.log(`https://dash.safe-grow.com${product?.imageSrc}`)
+
+  if (loading) {
+    return <div>Loading products...</div>;
+  }
+
 
   if (!product) {
     return (
@@ -51,8 +77,30 @@ export default function ProductDetails() {
   };
 
   const currentImage = currentImageIndex === 0 
-    ? product.imageSrc 
+    ? `https://dash.safe-grow.com${product.imageSrc}` 
     : product.additionalImages[currentImageIndex - 1];
+
+  const handleAddToCart = () => {
+    if (product.sizes.length > 0 && !selectedSize) {
+      toast.error("Please select a size");
+      return;
+    }
+
+    const finalPrice = product.sizes.length > 0
+      ? product.sizes.find(s => s.name === selectedSize)?.price || product.price
+      : product.price;
+
+    addItem(
+      { ...product, price: finalPrice + additionalDonation },
+      quantity,
+      selectedSize
+    );
+
+    toast.success("Added to cart!");
+  };
+
+  const incrementQuantity = () => setQuantity(prev => prev + 1);
+  const decrementQuantity = () => setQuantity(prev => Math.max(1, prev - 1));
 
   return (
     <div className="bg-white">
@@ -79,7 +127,7 @@ export default function ProductDetails() {
               <WatermarkedImage
                 src={currentImage}
                 alt={`${product.name} by ${product.artist.name}`}
-                watermarkText={`© ${product.artist.name} - SafeGrow`}
+                watermarkText={`© SafeGrow`}
                 className="rounded-2xl"
               />
               
@@ -109,7 +157,7 @@ export default function ProductDetails() {
                 }`}
               >
                 <WatermarkedImage
-                  src={product.imageSrc}
+                  src={`https://dash.safe-grow.com${product.imageSrc}`}
                   alt={`${product.name} main image`}
                   watermarkText={`© SafeGrow`}
                   className="rounded-lg"
@@ -176,24 +224,46 @@ export default function ProductDetails() {
             </div>
 
             {/* Size Selection */}
+            {product.sizes.length > 0 && (
+              <div className="mt-8">
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">Size</h3>
+                <div className="flex flex-wrap gap-3">
+                  {product.sizes.map((size) => (
+                    <button
+                      key={size.name}
+                      onClick={() => setSelectedSize(size.name)}
+                      className={`
+                        px-4 py-2 text-sm font-medium rounded-lg border-2 transition-all duration-300
+                        ${selectedSize === size.name
+                          ? "border-[#009688] text-[#009688] bg-[#009688]/5"
+                          : "border-gray-200 text-gray-700 hover:border-gray-300"
+                        }
+                      `}
+                    >
+                      {size.name} - ${size.price}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Quantity Selection */}
             <div className="mt-8">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Size</h3>
-              <div className="flex flex-wrap gap-3">
-                {product.sizes.map((size) => (
-                  <button
-                    key={size.name}
-                    onClick={() => setSelectedSize(size.name)}
-                    className={`
-                      px-4 py-2 text-sm font-medium rounded-lg border-2 transition-all duration-300
-                      ${selectedSize === size.name
-                        ? "border-[#009688] text-[#009688] bg-[#009688]/5"
-                        : "border-gray-200 text-gray-700 hover:border-gray-300"
-                      }
-                    `}
-                  >
-                    {size.name} - ${size.price}
-                  </button>
-                ))}
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">Quantity</h3>
+              <div className="flex items-center space-x-4">
+                <button
+                  onClick={decrementQuantity}
+                  className="p-2 rounded-lg border border-gray-200 hover:bg-gray-100 transition-colors"
+                >
+                  <Minus className="w-5 h-5 text-gray-600" />
+                </button>
+                <span className="text-xl font-medium text-gray-900">{quantity}</span>
+                <button
+                  onClick={incrementQuantity}
+                  className="p-2 rounded-lg border border-gray-200 hover:bg-gray-100 transition-colors"
+                >
+                  <Plus className="w-5 h-5 text-gray-600" />
+                </button>
               </div>
             </div>
 
@@ -226,10 +296,11 @@ export default function ProductDetails() {
             </div>
 
             <button
+              onClick={handleAddToCart}
               className="mt-8 flex w-full items-center justify-center rounded-xl border border-transparent bg-[#009688] px-8 py-4 text-lg font-medium text-white hover:bg-[#007a6c] focus:outline-none focus:ring-2 focus:ring-[#009688] focus:ring-offset-2 transition-colors duration-300"
             >
-              Coming Soon
-              <Heart className="w-5 h-5 ml-2" />
+              Add to cart
+              <ShoppingCart className="w-5 h-5 ml-2" />
             </button>
           </motion.div>
         </div>
