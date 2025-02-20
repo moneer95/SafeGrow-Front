@@ -25,7 +25,6 @@ const WatermarkedImage: React.FC<WatermarkedImageProps> = ({
     if (!ctx) return;
 
     const img = new Image();
-    img.crossOrigin = "anonymous";
     img.src = src;
 
     img.onload = () => {

@@ -103,7 +103,7 @@ export default function BusinessKits() {
         </div>
       </div>
 
-      { selectedKit && <PayForm amount={selectedKit.price} isOpen={isOpen} setIsOpen={setIsOpen} />}
+      { selectedKit && <PayForm amount={selectedKit.price} products_ids={[selectedKit.name]} isOpen={isOpen} setIsOpen={setIsOpen} />}
 
       {/* Business Kits */}
       <div className="py-24 bg-gray-50">

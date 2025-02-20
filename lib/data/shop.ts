@@ -12,7 +12,7 @@ export const categories: Category[] = [
     image: "shop-photos/olive-women.jpg"
   },
   {
-    id: "Coloring Books",
+    id: "Coloring-Books",
     name: "Digital Textile Designs",
     description: "Digital patterns and textile designs for your creative projects",
     icon: Palette,
@@ -21,7 +21,7 @@ export const categories: Category[] = [
     image: "colorin-book-cover.png"
   },
   {
-    id: "Cooking Books",
+    id: "Cooking-Books",
     name: "Digital Craft Templates",
     description: "Digital templates and patterns for traditional Palestinian crafts",
     icon: CookingPot,

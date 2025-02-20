@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Navbar from "./Navbar";
 
-const PayForm = ({ amount, isOpen, setIsOpen }) => {
+const PayForm = ({ amount, products_ids, isOpen, setIsOpen }) => {
   const [loading, setLoading] = useState(false);
   const [userData, setUserData] = useState({
     firstName: "",
@@ -23,11 +24,12 @@ const PayForm = ({ amount, isOpen, setIsOpen }) => {
     try {
       const response = await axios.post("/api/paymob-intention", {
         amount,
-        currency: "USD",
+        currency: "EGP",
         first_name: userData.firstName,
         last_name: userData.lastName,
         email: userData.email,
         phone_number: userData.phone,
+        products_ids: products_ids
       });
 
       if (response.data.client_secret) {

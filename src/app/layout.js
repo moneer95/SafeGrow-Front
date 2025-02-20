@@ -3,6 +3,7 @@ import "./globals.css";
 import Footer from "../components/Footer";
 import Head from "next/head";
 import { Toaster } from "sonner";
+import FloatingCheckout from "../components/FloatingCheckout";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -33,6 +34,7 @@ export default function RootLayout({ children }) {
         <main className="flex-grow">
           {children}
         </main>
+        <FloatingCheckout />
         <Footer />
         <Toaster position="top-center" richColors />
       </body>

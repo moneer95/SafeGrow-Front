@@ -7,7 +7,7 @@ export async function POST(req) {
     const body = await req.json();
     console.log("Received Data:", body);
 
-    const { amount, currency, first_name, last_name, email, phone_number } = body;
+    const { amount, currency, first_name, last_name, email, phone_number, products_ids } = body;
 
 
     if (!amount || !first_name || !last_name || !phone_number || !email) {
@@ -25,7 +25,7 @@ export async function POST(req) {
       {
         amount: amount * 100, // Convert to cents
         currency: currency || "EGP",
-        payment_methods: [integrationId], 
+        payment_methods: [integrationId],
         billing_data: {
           first_name,
           last_name,
@@ -36,6 +36,11 @@ export async function POST(req) {
         redirection_url: "https://yourwebsite.com/payment-success",
         notification_url: "https://yourwebhook.com/notify",
         expiration: 3600,
+        // Add product IDs
+        metadata: {
+          products_ids: products_ids, // Sending the array of product IDs
+        },
+
       },
       {
         headers: {

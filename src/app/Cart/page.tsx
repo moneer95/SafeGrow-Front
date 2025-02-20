@@ -6,9 +6,12 @@ import { ArrowLeft, Trash2, Plus, Minus } from "lucide-react";
 import Link from "next/link";
 import Navbar from "../../components/Navbar";
 import { useCart } from "../../../lib/hooks/useCart";
+import PayForm from "../../components/MobCheckout";
 
 export default function Cart() {
   const { items, removeItem, updateQuantity, total } = useCart();
+  const [isOpen, setIsOpen] = useState(false);
+
 
   if (items.length === 0) {
     return (
@@ -18,7 +21,7 @@ export default function Cart() {
           <div className="text-center">
             <h2 className="text-2xl font-bold text-gray-900">Your cart is empty</h2>
             <p className="mt-4 text-gray-500">Start shopping to add items to your cart.</p>
-            <Link 
+            <Link
               href="/shop"
               className="mt-8 inline-flex items-center text-[#009688] hover:text-[#007a6c] transition-colors"
             >
@@ -34,8 +37,16 @@ export default function Cart() {
   return (
     <div className="bg-white">
       <Navbar darkMode={true} />
+
+      {isOpen && <PayForm
+        amount={total().toFixed(2)}
+        products_ids={items.map(item => item.id)}
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+      />}
+
       <div className="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
-        <Link 
+        <Link
           href="/shop"
           className="inline-flex items-center text-[#009688] hover:text-[#007a6c] transition-colors mb-8"
         >
@@ -59,7 +70,7 @@ export default function Cart() {
                   {/* Product Image */}
                   <div className="relative w-24 h-24 rounded-lg overflow-hidden">
                     <img
-                      src={item.imageSrc}
+                      src={`https://dash.safe-grow.com${item.imageSrc}`}
                       alt={item.name}
                       className="w-full h-full object-cover"
                     />
@@ -112,7 +123,7 @@ export default function Cart() {
           <div className="lg:col-span-4">
             <div className="bg-gray-50 rounded-xl p-6 sticky top-8">
               <h2 className="text-xl font-bold text-gray-900 mb-6">Order Summary</h2>
-              
+
               <div className="space-y-4">
                 <div className="flex justify-between text-base text-gray-600">
                   <span>Subtotal</span>
@@ -131,7 +142,7 @@ export default function Cart() {
               </div>
 
               <button
-                onClick={() => {/* Handle checkout */}}
+                onClick={() => setIsOpen(true)}
                 className="mt-6 w-full bg-[#009688] text-white py-3 px-4 rounded-lg hover:bg-[#007a6c] transition-colors font-medium"
               >
                 Proceed to Checkout
