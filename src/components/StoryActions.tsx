@@ -10,7 +10,7 @@ const actions = [
     icon: ShoppingBag,
     title: "Purchase a Business Starter Kit",
     description: "Empower a displaced Palestinian to build a sustainable livelihood through one of our specialized programs.",
-    href: "/programs",
+    href: "/business-kits",
     color: "bg-green-50",
     iconColor: "text-green-700",
     hoverColor: "hover:bg-green-100"
