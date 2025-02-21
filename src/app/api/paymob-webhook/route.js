@@ -4,26 +4,28 @@ export async function POST(req) {
   try {
     // Parse Paymob webhook payload
     const body = await req.json();
-    console.log("🔔 Paymob Webhook Received:", body);
+    console.log("🔔 Full Paymob Webhook Payload:", JSON.stringify(body, null, 2));
 
     // Extract needed fields from the payload
     const { obj } = body;
 
-    // Access the product_ids from metadata
-    const productIds = obj?.metadata?.product_ids || [];
-    console.log("🛒 Product IDs:", productIds);
-    
+    // Try accessing metadata directly
+    const metadata = obj?.metadata || {};
+    console.log("📦 Metadata Object:", metadata);
 
-    //Check if the payment is successful
+    // Access product_ids if available
+    const productIds = metadata.product_ids || [];
+    console.log("🛒 Product IDs:", productIds);
+
+    // Check if the payment is successful
     if (obj && obj.success) {
-      console.log("✅ Payment Successful for Order ID:", obj);
+      console.log("✅ Payment Successful for Order ID:", obj.order?.id);
 
       // TODO: Update your database or trigger any post-payment logic here
     } else {
       console.log("❌ Payment Failed or Incomplete for Order ID:", obj?.order?.id);
     }
 
-    // Respond with 200 OK to acknowledge receipt
     return NextResponse.json({ message: "Webhook received" }, { status: 200 });
   } catch (error) {
     console.error("⚠️ Webhook Error:", error.message);
