@@ -23,7 +23,7 @@ export async function POST(req) {
     const response = await axios.post(
       "https://accept.paymob.com/v1/intention/",
       {
-        amount: amount * 100, // Convert to cents
+        amount: amount * 100 * 50.57, // Convert to cents
         currency: currency || "EGP",
         payment_methods: [integrationId],
         billing_data: {
