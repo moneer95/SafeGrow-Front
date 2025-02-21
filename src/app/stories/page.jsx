@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Navbar from "../../components/Navbar";
+import StoryActions from "../../components/StoryActions";
 
 export default function StoriesPage() {
   const [stories, setStories] = useState([]);
@@ -47,7 +48,7 @@ export default function StoriesPage() {
       <Navbar darkMode />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         {/* Header */}
-        <motion.div 
+        <motion.div
           className="text-center max-w-3xl mx-auto mb-16"
           initial="initial"
           animate="animate"
@@ -60,8 +61,8 @@ export default function StoriesPage() {
             </span>
           </h1>
           <p className="mt-6 text-lg text-gray-600">
-            Each story represents a journey of resilience, determination, and hope. 
-            Through SafeGrow's support, these individuals have transformed challenges 
+            Each story represents a journey of resilience, determination, and hope.
+            Through SafeGrow's support, these individuals have transformed challenges
             into opportunities, creating lasting impact in their communities.
           </p>
         </motion.div>
@@ -108,8 +109,12 @@ export default function StoriesPage() {
           ))}
         </div>
 
+        {/* Action Section */}
+        <StoryActions />
+
+
         {/* Footer CTA */}
-        <motion.div 
+        <motion.div
           className="text-center mt-16"
           initial="initial"
           animate="animate"
@@ -117,8 +122,8 @@ export default function StoriesPage() {
           transition={{ duration: 0.6, delay: 0.4 }}
         >
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            These stories represent just a fraction of the lives touched by SafeGrow. 
-            Join us in creating more success stories and empowering Palestinian refugees 
+            These stories represent just a fraction of the lives touched by SafeGrow.
+            Join us in creating more success stories and empowering Palestinian refugees
             to build sustainable futures.
           </p>
         </motion.div>
