@@ -16,7 +16,7 @@ export async function POST(req) {
 
     //Check if the payment is successful
     if (obj && obj.success) {
-      console.log("✅ Payment Successful for Order ID:", obj.order.id);
+      console.log("✅ Payment Successful for Order ID:", obj);
 
       // TODO: Update your database or trigger any post-payment logic here
     } else {
