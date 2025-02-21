@@ -14,16 +14,16 @@ const ContactUs = () => {
 
   const contactCards = [
     {
-      title: "For Donors and Supporters",
+      title: "For Mentors and Supporters",
       description: "Interested in donating, mentoring, or purchasing goods from our participants? Contact us to learn more about how you can make a difference through SafeGrow.",
       image: "/Grad1.jpg",
       color: "#009688",
       contact: [
-        { icon: Mail, text: "info@safe-grow.com" },
+        { icon: Mail, text: "programs@safe-grow.com" },
       ]
     },
     {
-      title: "For Refugees",
+      title: "For Palestinians",
       description: "If you need help, have questions about our grant programs, or need assistance with your application, our team is ready to provide guidance. Please reach out and we'll be happy to assist.",
       image: "/Grad2.webp",
       color: "#00796B",

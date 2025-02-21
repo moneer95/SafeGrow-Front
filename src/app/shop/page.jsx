@@ -110,7 +110,7 @@ export default function Shop() {
                     <h3 className={`text-2xl font-bold ${category.color} mb-2`}>
                       {category.name}
                     </h3>
-                    <p className="text-gray-600 mb-4">
+                    <p className="text-gray-600 mb-4 line-clamp-2">
                       {category.description}
                     </p>
                     <div className="flex items-center justify-between">

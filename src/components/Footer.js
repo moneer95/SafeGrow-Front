@@ -15,8 +15,9 @@ const Footer = () => {
   const quickLinks = [
     { name: 'About Us', href: '/about' },
     { name: 'Our Programs', href: '/programs' },
-    { name: 'Get Involved', href: '/get-involved' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'Business Kits', href: '/business-kits' },
+    { name: 'Mentors', href: '/programs#safeconnect' },
+    { name: 'Contact Us', href: '/contact' },
   ];
 
   const programs = [
@@ -26,7 +27,6 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: Facebook, href: 'https://facebook.com' },
     { icon: Instagram, href: 'https://www.instagram.com/safegrow_org?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==' },
   ];
 
@@ -45,7 +45,7 @@ const Footer = () => {
           >
             <h3 className="text-2xl font-bold text-white mb-4">SafeGrow</h3>
             <p className="text-gray-400 leading-relaxed">
-              Empowering Palestinian refugees to build sustainable futures through 
+              Empowering displaced Palestinians to build sustainable futures through 
               comprehensive support, community connection, and skill development.
             </p>
             <div className="flex space-x-4 pt-4">
@@ -126,8 +126,8 @@ const Footer = () => {
             <h3 className="text-lg font-semibold text-white">Contact Us</h3>
             <ul className="space-y-3">
               <li className="flex items-center space-x-3">
-                <Phone className="w-5 h-5 text-[#009688]" />
-                <span>+20 123 456 7890</span>
+                {/* <Phone className="w-5 h-5 text-[#009688]" />
+                <span>+20 123 456 7890</span> */}
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-[#009688]" />
@@ -135,7 +135,7 @@ const Footer = () => {
                   href="mailto:info@safegrow.org"
                   className="hover:text-[#009688] transition-colors duration-300"
                 >
-                  info@safegrow.org
+                  info@safe-grow.com
                 </a>
               </li>
             </ul>

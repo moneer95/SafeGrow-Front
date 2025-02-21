@@ -128,7 +128,7 @@ export default function CategoryPage() {
                   </Link>
                 </h3>
 
-                <p className="text-gray-600 mb-6">{product.description}</p>
+                <p className="text-gray-600 mb-6 line-clamp-2">{product.description}</p>
 
                 <div className="mt-auto flex items-center justify-between">
                   <div>

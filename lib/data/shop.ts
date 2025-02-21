@@ -13,21 +13,22 @@ export const categories: Category[] = [
   },
   {
     id: "Coloring-Books",
-    name: "Digital Textile Designs",
-    description: "Digital patterns and textile designs for your creative projects",
+    name: "Palestinian Coloring Books",
+    description: `Palestinian-Themed Coloring Books.
+`,
     icon: Palette,
     color: "text-purple-600",
     bgColor: "bg-gray-200",
-    image: "colorin-book-cover.png"
+    image: "/colorin-book-cover.png"
   },
   {
     id: "Cooking-Books",
-    name: "Digital Craft Templates",
-    description: "Digital templates and patterns for traditional Palestinian crafts",
+    name: "Recipe Books",
+    description: "Discover the rich flavors and timeless recipes of Palestine with Palestinian cookbooks",
     icon: CookingPot,
     color: "text-amber-600",
     bgColor: "bg-gray-200",
-    image: "cook-book.png"
+    image: "/cook-book-cover.jpeg"
   }
 ];
 
@@ -69,22 +70,22 @@ export async function getProducts(): Promise<Product[]> {
         product.category_id === "photography"
           ? Camera
           : product.category_id === "coloring books"
-          ? Palette
-          : CookingPot,
+            ? Palette
+            : CookingPot,
       imageSrc: product.product_image || "https://via.placeholder.com/800",
       imageAlt: product.image_alt_text || "",
       features: product.features ? product.features.split(",") : [],
       sizes: product.sizes
         ? product.sizes.map((size: any) => ({
-            name: size.name,
-            price: size.price,
-          }))
+          name: size.name,
+          price: size.price,
+        }))
         : [],
       additionalImages: Array.isArray(product.gallery)
         ? product.gallery
         : product.gallery
-        ? [product.gallery]
-        : [],
+          ? [product.gallery]
+          : [],
       artist: {
         name: product.artist_name || "Unknown Artist",
         bio: product.artist_bio || "No biography available",

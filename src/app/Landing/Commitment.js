@@ -13,17 +13,17 @@ const commitments = [
   {
     icon: "/clipboard.png",
     title: "Ongoing Impact Reporting",
-    description: "SafeGrow shares stories of progress and success with our community of donors and supporters. From business launches to personal growth, we track the impact of our grants and provide clear, regular reports on how your support is helping refugees reclaim their futures."
+    description: "SafeGrow shares stories of progress and success with our community of donors and supporters. From business launches to personal growth, we track the impact of our grants and provide clear, regular reports on how your support is helping Palestinians reclaim their futures."
   },
   {
     icon: "/team.png",
     title: "Ethical Partnerships",
-    description: "We partner with local businesses in Cairo and international supporters who share our values of equity, dignity, and empowerment. Every partnership is designed to benefit both refugees and the wider community in a sustainable and ethical way."
+    description: "We partner with local businesses in Cairo and international supporters who share our values of equity, dignity, and empowerment. Every partnership is designed to benefit both Palestinians and the wider community in a sustainable and ethical way."
   },
   {
     icon: "/deep-learning.png",
     title: "Continuous Learning",
-    description: "SafeGrow is committed to listening to the needs of the communities we serve. We continuously refine our programs based on feedback from refugees, partners, and supporters to ensure that we are providing the most effective support possible."
+    description: "SafeGrow is committed to listening to the needs of the communities we serve. We continuously refine our programs based on feedback from Palestinians, partners, and supporters to ensure that we are providing the most effective support possible."
   }
 ];
 
@@ -52,8 +52,7 @@ const Commitment = () => {
             </span>
           </h2>
           <p className="mt-6 text-lg text-gray-600">
-            At SafeGrow, we are committed to making a lasting impact in the lives of Palestinian 
-            refugees while maintaining the highest standards of transparency and accountability. 
+            At SafeGrow, we are committed to making a lasting impact in the lives of Palestinians while maintaining the highest standards of transparency and accountability. 
             Our approach ensures that every donation, every mentorship, and every grant is used 
             to create meaningful change.
           </p>
@@ -110,7 +109,7 @@ const Commitment = () => {
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             By supporting SafeGrow, you are not just contributing financially — you are helping 
             to restore dignity, empower livelihoods, and create sustainable futures for 
-            Palestinian refugees. We believe in a future built on transparency, collaboration, 
+            Palestinians. We believe in a future built on transparency, collaboration, 
             and real, measurable impact.
           </p>
         </motion.div>

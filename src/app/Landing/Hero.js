@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Navbar from "../../components/Navbar";
-import { Users, HandHeart } from "lucide-react";
+import { Users, HandHeart, Italic } from "lucide-react";
 
 const Hero = () => {
   const images = [
@@ -56,11 +56,12 @@ const Hero = () => {
         {/* Buttons */}
         <div className="flex flex-col sm:flex-row gap-4">
           <Link
-            href="http://44.201.121.211/safegrow-new-case?new=1"
+            href="https://dash.safe-grow.com/safegrow-new-case?new=1"
             className="group px-10 py-3 bg-gray-50 text-[#009688] font-semibold rounded-md hover:bg-gray-100 hover:text-[#009688] flex items-center justify-center transition-all duration-300 w-full sm:w-auto hover:scale-105 active:scale-95"
           >
             <Users className="w-5 h-5 mr-2" />
-            I Need Help
+            
+            <h2> <i>I need help - </i> أبحث عن الدعم </h2>
           </Link>
 
           <Link
