@@ -34,7 +34,7 @@ export async function POST(req) {
           country: "EG",
         },
         redirection_url: "https://yourwebsite.com/payment-success",
-        notification_url: "https://yourwebhook.com/notify",
+        notification_url: "https://safe-grow.com/api/paymob-webhook",
         expiration: 3600,
         // Add product IDs
         metadata: {
