@@ -67,8 +67,8 @@ export default function BusinessKits() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
+      <Navbar darkMode />
       <div className="relative py-24 sm:pt-2">
-        <Navbar />
         <div className="absolute inset-0 overflow-hidden">
           <Image
             src="/iloveimg-converted/9.jpg"
@@ -81,7 +81,7 @@ export default function BusinessKits() {
         </div>
         <div className="relative">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <motion.div 
+            <motion.div
               className="text-center"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -94,8 +94,8 @@ export default function BusinessKits() {
                 </span>
               </h1>
               <p className="mt-6 text-lg leading-8 text-white/90 max-w-3xl mx-auto">
-                At SafeGrow, we believe that rebuilding livelihoods starts with providing the right tools. 
-                Our Business Kits are designed to support displaced Palestinians in creating sustainable businesses, 
+                At SafeGrow, we believe that rebuilding livelihoods starts with providing the right tools.
+                Our Business Kits are designed to support displaced Palestinians in creating sustainable businesses,
                 launching freelance careers, or recovering from displacement.
               </p>
             </motion.div>
@@ -103,7 +103,7 @@ export default function BusinessKits() {
         </div>
       </div>
 
-      { selectedKit && <PayForm amount={selectedKit.price} products_ids={[selectedKit.name]} isOpen={isOpen} setIsOpen={setIsOpen} />}
+      {selectedKit && <PayForm amount={selectedKit.price} products_ids={[selectedKit.name]} isOpen={isOpen} setIsOpen={setIsOpen} />}
 
       {/* Business Kits */}
       <div className="py-24 bg-gray-50">
@@ -123,9 +123,8 @@ export default function BusinessKits() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className={`relative flex flex-col rounded-2xl border-4 ${
-                  kit.popular ? "border-[#009688]" : "border-gray-200"
-                } bg-white p-8 transition-all duration-300 hover:shadow-lg h-full`}
+                className={`relative flex flex-col rounded-2xl border-4 ${kit.popular ? "border-[#009688]" : "border-gray-200"
+                  } bg-white p-8 transition-all duration-300 hover:shadow-lg h-full`}
               >
                 {kit.popular && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2">
@@ -159,11 +158,10 @@ export default function BusinessKits() {
                 </div>
                 <button
                   onClick={() => handleDonate(kit)}
-                  className={`mt-8 w-full rounded-lg px-4 py-4 text-center text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-2 ${
-                    kit.popular
+                  className={`mt-8 w-full rounded-lg px-4 py-4 text-center text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-2 ${kit.popular
                       ? "bg-[#87CA2F] text-white hover:bg-[#87CA2F]/90"
                       : "bg-[#009688] text-white hover:bg-[#009688]/90"
-                  }`}
+                    }`}
                 >
                   Get {kit.name}
                   <ArrowRight className="h-4 w-4" />
@@ -173,7 +171,7 @@ export default function BusinessKits() {
           </div>
         </div>
       </div>
-      
+
 
       {/* Questions Section */}
       <div className="bg-white py-24">

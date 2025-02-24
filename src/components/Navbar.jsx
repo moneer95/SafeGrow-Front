@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { FaBars } from "react-icons/fa";
 import { IoIosClose } from "react-icons/io";
-import { Briefcase } from "lucide-react";
+import { Briefcase, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -81,14 +81,47 @@ export default function Navbar({ darkMode = false }) {
           </Link>
         </div>
 
-        {/* Hamburger menu on mobile */}
-        <div className="lg:hidden z-10">
+        {/* Mobile Action Buttons and Menu */}
+        <div className="lg:hidden flex items-center gap-2 z-10">
+          {/* Business Kits Button */}
+          <Link href="/business-kits">
+            <button
+              className={`p-2 rounded-lg transition-all duration-300 ${
+                darkMode
+                  ? "bg-gray-100 text-gray-800"
+                  : "bg-white/10 text-white"
+              }`}
+              aria-label="Business Kits"
+            >
+              <Briefcase className="w-5 h-5" />
+            </button>
+          </Link>
+
+          {/* Hire Palestinian Button */}
+          <Link href="/programs#safeconnect">
+            <button
+              className={`p-2 rounded-lg transition-all duration-300 ${
+                darkMode
+                  ? "bg-gray-100 text-gray-800"
+                  : "bg-white/10 text-white"
+              }`}
+              aria-label="Hire Palestinian"
+            >
+              <Users className="w-5 h-5" />
+            </button>
+          </Link>
+
+          {/* Menu Button */}
           <button
             onClick={() => setMenuOpen(true)}
             aria-label="Toggle navigation menu"
-            className={textColor}
+            className={`p-2 rounded-lg transition-all duration-300 ${
+              darkMode
+                ? "bg-gray-100 text-gray-800"
+                : "bg-white/10 text-white"
+            }`}
           >
-            <FaBars className="h-6 w-6" />
+            <FaBars className="h-5 w-5" />
           </button>
         </div>
       </nav>

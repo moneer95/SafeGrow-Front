@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronRight } from "lucide-react";
 import Navbar from "../../components/Navbar";
 import StoryActions from "../../components/StoryActions";
 
@@ -110,6 +110,26 @@ export default function StoriesPage() {
         </div>
 
         {/* Action Section */}
+        {/* Call to Action */}
+        <motion.div
+          className="text-center mt-16"
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true }}
+          {...fadeIn}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">
+            Inspired by these stories?
+          </h3>
+          <Link
+            href="/business-kits"
+            className="inline-flex items-center text-[#86CA2F] hover:text-[#6da02b] font-semibold transition-colors"
+          >
+            Find out how you can help
+            <ChevronRight className="w-5 h-5 ml-1" />
+          </Link>
+        </motion.div>
         <StoryActions />
 
 

@@ -22,9 +22,23 @@ const Programs = () => {
 
   const selectedProgram = programs.find(p => p.id === activeProgram);
 
+  const handleProgramSelect = (programId) => {
+    setActiveProgram(programId);
+    // Wait for the program card to render
+    setTimeout(() => {
+      const element = document.getElementById('program-card');
+      if (element) {
+        element.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    }, 100);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      <Navbar darkMode />
+      <Navbar darkMode={true} />
       {/* Programs Navigation */}
       <div className="bg-white border-b border-gray-100 top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -32,7 +46,7 @@ const Programs = () => {
             {programs.map((program) => (
               <motion.button
                 key={program.id}
-                onClick={() => setActiveProgram(program.id)}
+                onClick={() => handleProgramSelect(program.id)}
                 className={`p-6 rounded-xl text-left transition-all duration-300 
                   ${program.bgColor} 
                   ${activeProgram === program.id ? 'ring-2 ring-offset-2 ' + program.color.replace('text-', 'ring-') : ''}
@@ -84,7 +98,7 @@ const Programs = () => {
               transition={{ duration: 0.5 }}
             >
               {selectedProgram && (
-                <>
+                <div id="program-card">
                   <ProgramCard
                     program={selectedProgram}
                     currentImageIndex={currentImageIndex[selectedProgram.id] || 0}
@@ -109,13 +123,13 @@ const Programs = () => {
                   />
                   {selectedProgram.id === "safeconnect" && <SafeConnectJobs />}
 
-                  {/* Action Srction */}
+                  {/* Action Section */}
                   <StoryActions />
 
                   <div className="mt-12">
                     <CommitmentSection commitments={commitments} />
                   </div>
-                </>
+                </div>
               )}
             </motion.div>
           )}
