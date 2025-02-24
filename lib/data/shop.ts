@@ -22,7 +22,7 @@ export const categories: Category[] = [
     image: "/colorin-book-cover.png"
   },
   {
-    id: "cooking-books",
+    id: "cook-books",
     name: "Recipe Books",
     description: "Discover the rich flavors and timeless recipes of Palestine with Palestinian cookbooks",
     icon: CookingPot,
