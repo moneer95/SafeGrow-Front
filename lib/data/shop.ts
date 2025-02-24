@@ -12,7 +12,7 @@ export const categories: Category[] = [
     image: "shop-photos/olive-women.jpg"
   },
   {
-    id: "Coloring-Books",
+    id: "coloring-books",
     name: "Palestinian Coloring Books",
     description: `Palestinian-Themed Coloring Books.
 `,
@@ -22,7 +22,7 @@ export const categories: Category[] = [
     image: "/colorin-book-cover.png"
   },
   {
-    id: "Cooking-Books",
+    id: "cooking-books",
     name: "Recipe Books",
     description: "Discover the rich flavors and timeless recipes of Palestine with Palestinian cookbooks",
     icon: CookingPot,
