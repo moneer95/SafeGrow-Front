@@ -14,7 +14,7 @@ export default function PayPalCheckout() {
             },
           });
           const order = await res.json();
-          return order.id; // Return the order ID to PayPal
+          return 'donee'; // Return the order ID to PayPal
         } catch (error) {
           console.error("Error creating order:", error);
           throw error;
