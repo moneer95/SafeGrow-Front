@@ -27,7 +27,7 @@ export default function PayPalCheckout() {
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ orderID: data.orderID }),
+            body: JSON.stringify({ orderID: 'donee' }),
           });
           const captureData = await res.json();
           console.log("Payment captured:", captureData);
