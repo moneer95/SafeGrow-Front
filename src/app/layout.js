@@ -1,29 +1,31 @@
+"use client"; 
 import localFont from "next/font/local";
 import "./globals.css";
 import Footer from "../components/Footer";
 import Head from "next/head";
 import { Toaster } from "sonner";
 import FloatingCheckout from "../components/FloatingCheckout";
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
   weight: "100 900",
 });
+
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900",
 });
 
-export const metadata = {
-  title: "Safe Grow",
-  description: "Empowering Palestinian Refugees to Build Sustainable Futures",
-  icons: {
-    icon: "/favicon.ico",
-  },
-
-};
+// export const metadata = {
+//   title: "Safe Grow",
+//   description: "Empowering Palestinian Refugees to Build Sustainable Futures",
+//   icons: {
+//     icon: "/favicon.ico",
+//   },
+// };
 
 export default function RootLayout({ children }) {
   return (
@@ -31,12 +33,18 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >
-        <main className="flex-grow">
-          {children}
-        </main>
-        <FloatingCheckout />
-        <Footer />
-        <Toaster position="top-center" richColors />
+        {/* 🟢 Wrap the entire layout with PayPalScriptProvider */}
+        <PayPalScriptProvider
+          options={{
+            "client-id": "AUAWkjn3t5E6OyCivLBKjNMzvxYC7bjr9Ygm5PoN4qmWy1fN6Dy61ZOTa2-C4jbQcnedmwSXJv3rO8d1",
+            currency: "USD", // Optional: Set the currency
+          }}
+        >
+          <main className="flex-grow">{children}</main>
+          <FloatingCheckout />
+          <Footer />
+          <Toaster position="top-center" richColors />
+        </PayPalScriptProvider>
       </body>
     </html>
   );

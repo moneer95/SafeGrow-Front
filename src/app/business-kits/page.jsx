@@ -7,8 +7,7 @@ import Link from "next/link";
 import Navbar from "../../components/Navbar";
 import CheckoutForm from "../../components/CheckoutForm";
 import { motion } from "framer-motion";
-import PayForm from "../../components/MobCheckout"
-
+import PayPalCheckout from "../../components/PayPalCheckout"
 const kits = [
   {
     name: "Small Business Starter Kit",
@@ -59,10 +58,9 @@ export default function BusinessKits() {
     setIsOpen(true)
   };
 
-  // if (selectedKit) {
-  //   return <PayForm amount={100} />
-  //   return <CheckoutForm amount={selectedKit.price} />;
-  // }
+  if (selectedKit) {
+    <PayPalCheckout />
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -103,7 +101,7 @@ export default function BusinessKits() {
         </div>
       </div>
 
-      {selectedKit && <PayForm amount={selectedKit.price} products_ids={[selectedKit.name]} isOpen={isOpen} setIsOpen={setIsOpen} />}
+      {/* {selectedKit && <PayForm amount={selectedKit.price} products_ids={[selectedKit.name]} isOpen={isOpen} setIsOpen={setIsOpen} />} */}
 
       {/* Business Kits */}
       <div className="py-24 bg-gray-50">

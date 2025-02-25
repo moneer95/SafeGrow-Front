@@ -36,8 +36,6 @@ export const categories: Category[] = [
 
 
 
-
-
 const API_URL = "https://dash.safe-grow.com/api/method/safegrow.api.get_products";
 
 export async function getProducts(): Promise<Product[]> {
