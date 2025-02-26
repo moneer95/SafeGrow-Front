@@ -7,8 +7,21 @@ const clientSecret = process.env.PAYPAL_CLIENT_SECRET;
 const environment = new paypal.core.SandboxEnvironment(clientId, clientSecret);
 const client = new paypal.core.PayPalHttpClient(environment);
 
-export async function POST() {
+export async function POST(req) {
   try {
+
+    const body = await req.json();
+    const { amount } = body; // Extract amount from request
+
+
+    if (!amount || isNaN(amount)) {
+        return NextResponse.json(
+          { error: "Invalid amount provided" },
+          { status: 400 }
+        );
+      }
+    
+
     // Create a new order request
     const request = new paypal.orders.OrdersCreateRequest();
 
@@ -19,7 +32,7 @@ export async function POST() {
         {
           amount: {
             currency_code: "USD",
-            value: "100.00", // Set the amount
+            value: amount.toString(), 
           },
         },
       ],

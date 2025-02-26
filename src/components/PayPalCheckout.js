@@ -1,7 +1,7 @@
 "use client";
 import { PayPalButtons } from "@paypal/react-paypal-js";
 
-export default function PayPalCheckout() {
+export default function PayPalCheckout({amount}) {
   return (
     <PayPalButtons
       style={{ layout: "vertical", color: "silver" }}
@@ -12,6 +12,7 @@ export default function PayPalCheckout() {
             headers: {
               "Content-Type": "application/json",
             },
+            body: JSON.stringify({amount})
           });
           const order = await res.json();
           return order.id; // Return the order ID to PayPal

@@ -59,7 +59,7 @@ export default function BusinessKits() {
   };
 
   if (selectedKit) {
-    <PayPalCheckout />
+    <PayPalCheckout amount={selectedKit.price} />
   }
 
   return (
