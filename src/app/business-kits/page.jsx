@@ -11,7 +11,7 @@ import PayPalCheckout from "../../components/PayPalCheckout"
 const kits = [
   {
     name: "Small Business Starter Kit",
-    price: 300,
+    price: 1,
     description: "Support small, local businesses like crafting, tailoring, tutoring, or plant-growing. This kit provides the basics to help start and sustain a small venture.",
     features: [
       "Materials and equipment for businesses like crafting, tailoring, or tutoring",
