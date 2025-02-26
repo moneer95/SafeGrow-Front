@@ -3,6 +3,11 @@ import { PayPalButtons } from "@paypal/react-paypal-js";
 import Navbar from "./Navbar";
 
 export default function PayPalCheckout({ amount }) {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" }); // Scrolls smoothly to the top
+  }, []); // Runs only once when the component mounts
+
+
   console.log(amount);
   return (
     <>
