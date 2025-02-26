@@ -1,6 +1,7 @@
 "use client";
 import { PayPalButtons } from "@paypal/react-paypal-js";
 import Navbar from "./Navbar";
+import { useEffect } from "react";
 
 export default function PayPalCheckout({ amount }) {
   useEffect(() => {
