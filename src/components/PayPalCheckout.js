@@ -8,8 +8,8 @@ export default function PayPalCheckout({ amount }) {
     window.scrollTo({ top: 0, behavior: "smooth" }); // Scrolls smoothly to the top
   }, []); // Runs only once when the component mounts
 
-
   console.log(amount);
+  
   return (
     <>
       <Navbar darkMode />
@@ -18,17 +18,16 @@ export default function PayPalCheckout({ amount }) {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          height: "170vh", 
-          width: "100%", // Set a fixed width
-
+          minHeight: "100vh", // Ensures full screen coverage
+          width: "100%",
+          padding: "20px", // Adds spacing for small screens
         }}
       >
         <PayPalButtons
           style={{
             layout: "vertical",
-            width: "100%", // Set a fixed width
-            color: "silver"
-
+            width: "100%", 
+            color: "silver",
           }}
           createOrder={async (data, actions) => {
             try {
