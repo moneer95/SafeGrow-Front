@@ -1,0 +1,13 @@
+diff --git a/node_modules/@paypal/checkout-server-sdk/lib/core/paypal_environment.js b/node_modules/@paypal/checkout-server-sdk/lib/core/paypal_environment.js
+index c730e87..7fa7110 100755
+--- a/node_modules/@paypal/checkout-server-sdk/lib/core/paypal_environment.js
++++ b/node_modules/@paypal/checkout-server-sdk/lib/core/paypal_environment.js
+@@ -28,7 +28,7 @@ class PayPalEnvironment extends paypalhttp.Environment {
+    * @return {string} - The authorization header value
+    */
+   authorizationString() {
+-    let encoded = new Buffer(`${this.clientId}:${this.clientSecret}`).toString('base64');
++    let encoded = new Buffer.from(`${this.clientId}:${this.clientSecret}`).toString('base64');
+ 
+     return `Basic ${encoded}`;
+   }
