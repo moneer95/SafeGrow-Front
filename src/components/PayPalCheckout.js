@@ -12,7 +12,7 @@ export default function PayPalCheckout({ amount }) {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          height: "70vh", 
+          height: "120vh", 
           width: "100%", // Set a fixed width
 
         }}
