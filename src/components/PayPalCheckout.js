@@ -14,20 +14,21 @@ export default function PayPalCheckout() {
             },
           });
           const order = await res.json();
-          return 'donee'; // Return the order ID to PayPal
+          return order.id; // Return the order ID to PayPal
         } catch (error) {
           console.error("Error creating order:", error);
           throw error;
         }
       }}
       onApprove={async (data, actions) => {
+        console.log('entered')
         try {
           const res = await fetch(`/api/capture`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ orderID: 'donee' }),
+            body: JSON.stringify({ orderID: data.orderID }),
           });
           const captureData = await res.json();
           console.log("Payment captured:", captureData);

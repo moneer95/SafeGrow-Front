@@ -9,8 +9,11 @@ const client = new paypal.core.PayPalHttpClient(environment);
 
 export async function POST() {
   try {
+    // Create a new order request
     const request = new paypal.orders.OrdersCreateRequest();
-    request.requestBody({
+
+    // Set the request body
+    request.body = {
       intent: "CAPTURE",
       purchase_units: [
         {
@@ -20,12 +23,21 @@ export async function POST() {
           },
         },
       ],
-    });
+    };
 
+    // Execute the request
     const response = await client.execute(request);
+
+    // Return the order ID to the client
     return NextResponse.json({ id: response.result.id });
   } catch (error) {
-    console.error("Error creating PayPal order:", error);
-    return NextResponse.json({ error: "Failed to create order" }, { status: 500 });
+    // Log the full error for debugging
+    console.error("Error creating PayPal order:", JSON.stringify(error, null, 2));
+
+    // Return a user-friendly error message
+    return NextResponse.json(
+      { error: "Failed to create PayPal order" },
+      { status: 500 }
+    );
   }
 }
