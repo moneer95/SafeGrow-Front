@@ -59,7 +59,9 @@ export default function BusinessKits() {
   };
 
   if (selectedKit) {
-    <PayPalCheckout amount={selectedKit.price} />
+    return <div className="w-full">
+             <PayPalCheckout amount={selectedKit.price} />
+           </div>
   }
 
   return (
@@ -157,8 +159,8 @@ export default function BusinessKits() {
                 <button
                   onClick={() => handleDonate(kit)}
                   className={`mt-8 w-full rounded-lg px-4 py-4 text-center text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-2 ${kit.popular
-                      ? "bg-[#87CA2F] text-white hover:bg-[#87CA2F]/90"
-                      : "bg-[#009688] text-white hover:bg-[#009688]/90"
+                    ? "bg-[#87CA2F] text-white hover:bg-[#87CA2F]/90"
+                    : "bg-[#009688] text-white hover:bg-[#009688]/90"
                     }`}
                 >
                   Get {kit.name}
