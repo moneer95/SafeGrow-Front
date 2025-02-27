@@ -5,8 +5,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import { CheckCircle } from "lucide-react";
 import Link from "next/link";
-import Navbar from "@/components/Navbar";
-import { useCart } from "@/lib/hooks/useCart";
+import Navbar from "../../components/Navbar";
+import { useCart } from "../../../lib/hooks/useCart";
 
 export default function Success() {
   const router = useRouter();
