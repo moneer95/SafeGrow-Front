@@ -42,6 +42,7 @@ export async function POST(req) {
     // Execute the request
     const response = await client.execute(request);
 
+
     // Return the order ID to the client
     return NextResponse.json({ id: response.result.id });
   } catch (error) {
