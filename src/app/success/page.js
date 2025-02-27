@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { CheckCircle } from "lucide-react";
 import Link from "next/link";
@@ -10,17 +10,8 @@ import { useCart } from "../../../lib/hooks/useCart";
 
 export default function Success() {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const { clearCart } = useCart();
-  const sessionId = searchParams.get("session_id");
 
-  useEffect(() => {
-    if (sessionId) {
-      clearCart();
-    } else {
-      router.push("/");
-    }
-  }, [sessionId, clearCart, router]);
+  
 
   return (
     <div className="min-h-screen bg-gray-50">
