@@ -36,7 +36,7 @@ export default function RootLayout({ children }) {
         {/* 🟢 Wrap the entire layout with PayPalScriptProvider */}
         <PayPalScriptProvider
           options={{
-            "client-id": "AUAWkjn3t5E6OyCivLBKjNMzvxYC7bjr9Ygm5PoN4qmWy1fN6Dy61ZOTa2-C4jbQcnedmwSXJv3rO8d1",
+            "client-id": "AcJbep8WckvKr8vz7sU6P8tqsUAWUnK9HtY1SkklEJkjy4_WL-RlZn5p11KYS71fK7YpZ1-TKLazOT_R",
             currency: "USD", // Optional: Set the currency
           }}
         >
