@@ -35,6 +35,7 @@ export default function PayPalCheckout({ amount }) {
             color: "silver",
           }}
           createOrder={async (data, actions) => {
+            console.log('111')
             try {
               const res = await fetch("/api/paypal_checkout", {
                 method: "POST",
