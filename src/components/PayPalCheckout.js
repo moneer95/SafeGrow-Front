@@ -2,8 +2,13 @@
 import { PayPalButtons } from "@paypal/react-paypal-js";
 import Navbar from "./Navbar";
 import { useEffect } from "react";
+import { useRouter } from "next/navigation"; // Import Next.js router
+
 
 export default function PayPalCheckout({ amount }) {
+  const router = useRouter(); // Initialize router
+
+
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" }); // Scrolls smoothly to the top
   }, []); // Runs only once when the component mounts
@@ -57,6 +62,8 @@ export default function PayPalCheckout({ amount }) {
               });
               const captureData = await res.json();
               console.log("Payment captured:", captureData);
+              router.push(`/success?orderID=${data.orderID}`);
+
             } catch (error) {
               console.error("Error capturing payment:", error);
             }

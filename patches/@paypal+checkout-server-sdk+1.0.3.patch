@@ -1,13 +1,30 @@
 diff --git a/node_modules/@paypal/checkout-server-sdk/lib/core/paypal_environment.js b/node_modules/@paypal/checkout-server-sdk/lib/core/paypal_environment.js
-index c730e87..7fa7110 100755
+index c730e87..6b1f355 100755
 --- a/node_modules/@paypal/checkout-server-sdk/lib/core/paypal_environment.js
 +++ b/node_modules/@paypal/checkout-server-sdk/lib/core/paypal_environment.js
-@@ -28,7 +28,7 @@ class PayPalEnvironment extends paypalhttp.Environment {
+@@ -28,8 +28,7 @@ class PayPalEnvironment extends paypalhttp.Environment {
     * @return {string} - The authorization header value
     */
    authorizationString() {
 -    let encoded = new Buffer(`${this.clientId}:${this.clientSecret}`).toString('base64');
-+    let encoded = new Buffer.from(`${this.clientId}:${this.clientSecret}`).toString('base64');
- 
+-
++    let encoded = Buffer.from(`${this.clientId}:${this.clientSecret}`).toString('base64'); // ✅ Corrected
      return `Basic ${encoded}`;
+   }
+ }
+@@ -38,7 +37,6 @@ class PayPalEnvironment extends paypalhttp.Environment {
+  * Sandbox Environment
+  */
+ class SandboxEnvironment extends PayPalEnvironment {
+-
+   constructor(clientId, clientSecret) {
+     super(clientId, clientSecret, SANDBOX, SANDBOX_WEB_URL);
+   }
+@@ -48,7 +46,6 @@ class SandboxEnvironment extends PayPalEnvironment {
+  * Live Environment
+  */
+ class LiveEnvironment extends PayPalEnvironment {
+-
+   constructor(clientId, clientSecret) {
+     super(clientId, clientSecret, LIVE, LIVE_WEB_URL);
    }
