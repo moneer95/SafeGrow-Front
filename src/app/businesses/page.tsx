@@ -230,6 +230,7 @@ export default function BusinessDirectory() {
         )}
       </div>
 
+
       {/* Join Directory CTA */}
       <div className="bg-[#009688]/10 py-8">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
