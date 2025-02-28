@@ -171,7 +171,7 @@ export const businesses: Business[] = [
     description: "A YouTube channel born from our journey through hardship in Gaza, where hope was our guiding light. A place where kids can learn, laugh, and explore in a fun and engaging way.",
     youtube: "https://youtube.com/@lilispace-kids?feature=shared",
     location: "Online",
-    // instagram: "rouh.gaza",
+    instagram: "",
   },
   {
     id: "suzana-fashion",
@@ -191,6 +191,7 @@ export const businesses: Business[] = [
     categoryIcon: Utensils,
     description: "A Palestinian family working together, with both parents and children, to offer the finest Ma'amoul, olive oil, and Palestinian pickles.",
     facebook: "https://www.facebook.com/share/1AJ2nnCSfS/",
-    location: "Cairo, Egypt"
+    location: "Cairo, Egypt",
+    instagram: "",
   }
 ];
