@@ -113,18 +113,18 @@ export default function BusinessDirectory() {
                 {/* Logo */}
                 <div className="w-24 h-24 sm:w-32 sm:h-32 relative flex-shrink-0 bg-gray-100">
                   {business.logo.startsWith('/') ? (
-                    <div className="w-full h-full flex items-center justify-center p-2">
+                    <div className="w-full h-full flex items-center justify-center">
                       <Image
-                        src={business.logo}
-                        alt={`${business.name} logo`}
-                        width={100}
+                      src={`https://dash.safe-grow.com${business.logo}`}
+                      alt={`${business.name} logo`}
+                        width={2000}
                         height={100}
-                        className="object-contain"
+                        className="object-cover"
                       />
                     </div>
                   ) : (
                     <img
-                      src={business.logo}
+                      src={`https://dash.safe-grow.com${business.logo}`}
                       alt={`${business.name} logo`}
                       className="w-full h-full object-cover"
                     />
