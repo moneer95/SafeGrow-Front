@@ -157,7 +157,7 @@ export default function BusinessDirectory() {
 
                       {business.instagram && (
                         <a
-                          href={`https://instagram.com/${business.instagram}`}
+                          href={`${business.instagram}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="inline-flex items-center text-sm bg-gray-100 hover:bg-gray-200 text-gray-800 px-3 py-1 rounded-full transition-colors"
