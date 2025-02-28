@@ -5,12 +5,20 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ShoppingBag, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { useCart } from '../../lib/hooks/useCart';
+import { usePathname } from "next/navigation";
+
 
 const FloatingCheckout = () => {
+  const pathname = usePathname(); // Get current URL path
+
   const { items, total } = useCart();
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
 
+
+  console.log(pathname)
+
   if (totalItems === 0) return null;
+  if(pathname == "/Cart") return null;
 
   return (
     <AnimatePresence>
