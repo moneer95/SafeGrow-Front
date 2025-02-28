@@ -1,9 +1,11 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Users, HandHeart } from "lucide-react";
 import Link from "next/link";
+import StoryActions from "../../components/StoryActions";
+
 
 const GetInvolved = () => {
   const fadeIn = {
@@ -11,6 +13,17 @@ const GetInvolved = () => {
     animate: { opacity: 1, y: 0 },
     transition: { duration: 0.6 }
   };
+
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
+
+  const handleButtonClick = () => {
+    setIsPopupVisible(true); // Show the popup
+  };
+
+  const closePopup = () => {
+    setIsPopupVisible(false); // Hide the popup
+  };
+
 
   return (
     <section className="relative bg-gradient-to-b from-gray-50 to-white py-24 lg:py-32 overflow-hidden">
@@ -43,16 +56,34 @@ const GetInvolved = () => {
                 </motion.button>
               </Link>
 
-              <Link href="/business-kits">
-                <motion.button
-                  className="px-10 py-3 bg-[#009688] text-white font-semibold rounded-md hover:bg-[#009688] flex items-center justify-center w-full sm:w-auto transition-colors duration-300"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <HandHeart className="w-5 h-5 mr-2" />
-                  I Want to Help
-                </motion.button>
-              </Link>
+              <div>
+                {/* Button */}
+                  <motion.button
+                    className="px-10 py-3 bg-[#009688] text-white font-semibold rounded-md hover:bg-[#009688] flex items-center justify-center w-full sm:w-auto transition-colors duration-300"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={handleButtonClick} // Add click handler
+                  >
+                    <HandHeart className="w-5 h-5 mr-2" />
+                    I Want to Help
+                  </motion.button>
+
+                {/* Popup */}
+                {isPopupVisible && (
+                  <div className="fixed inset-0 flex items-center w-full justify-center bg-black bg-opacity-50 z-50">
+                    <div className="bg-white p-6 rounded-lg shadow-lg  w-10/12">
+                      <StoryActions />
+                      <button
+                        className="px-4 py-2 flex mx-auto bg-[#009688] text-white rounded-md hover:bg-[#00796b] transition-colors duration-300"
+                        onClick={closePopup} // Close the popup
+                      >
+                        Close
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
+
             </div>
           </motion.div>
 
