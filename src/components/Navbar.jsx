@@ -13,11 +13,12 @@ export default function Navbar({ darkMode = false }) {
 
   const navLinks = [
     { name: "Home", href: "/", bgColor: "bg-[#009688]" },
-    { name: "About Us", href: "/about", bgColor: "bg-[#009688]" },
-    { name: "Our Programs", href: "/programs", bgColor: "bg-[#009688]" },
-    { name: "Our Stories", href: "/stories", bgColor: "bg-[#009688]" },
+    { name: "About-Us", href: "/about", bgColor: "bg-[#009688]" },
+    { name: "Programs", href: "/programs", bgColor: "bg-[#009688]" },
+    { name: "Stories", href: "/stories", bgColor: "bg-[#009688]" },
     { name: "Shop", href: "/shop", bgColor: "bg-[#009688]" },
-    { name: "Contact Us", href: "/contact", bgColor: "bg-[#009688]" },
+    { name: "Directory", href: "/businesses", bgColor: "bg-[#009688]" },
+    { name: "Contact", href: "/contact", bgColor: "bg-[#009688]" },
   ];
 
   const textColor = darkMode ? "text-gray-800" : "text-white";
