@@ -71,9 +71,10 @@ export default function PayPalCheckout() {
                 payerName: `${captureData.payer.name.given_name} ${captureData.payer.name.surname}`,
                 payerEmail: captureData.payer.email_address,
                 payerPhone: captureData.payer.phone?.phone_number?.national_number || "Not provided", // Extract phone
-                amount: captureData.purchase_units[0].amount.value,
-                currency: captureData.purchase_units[0].amount.currency_code,
-                transactionId: captureData.purchase_units[0].payments.captures[0].id,
+                amount: captureData.purchase_units[0].amount?.value,
+                currency: captureData.purchase_units[0].amount?.currency_code,
+                transactionId: captureData.purchase_units[0].payments?.captures[0]?.id,
+                items
               };
 
               // Redirect user to success page
@@ -106,41 +107,47 @@ export default function PayPalCheckout() {
 
 
 async function createFrappeOrder(orderData) {
-  const baseUrl = process.env.FRAPPE_BASE_URL;
-  const credentials = btoa(`${process.env.FRAPPE_API_TOKEN}:${process.env.FRAPPE_API_SECRET}`);
-  const authHeader = `token ${credentials}`;
+  const authHeader = `token 3134f21ff00eef5:8bd21a397796b3d`;
 
   try {
-    const res = await fetch("https://dash.safe-grow.com/api/resource/Orders", {
+    const payload = {
+      order_id: orderData.orderId,
+      status: orderData.status,
+      customer_name: orderData.payerName,
+      customer_email: orderData.payerEmail,
+      customer_phone: orderData.payerPhone,
+      currency: orderData.currency,
+      amount: orderData.amount,
+      transaction_id: orderData.transactionId,
+      items: orderData.items.map(item => ({
+        item_code: item.id,
+        item_name: item.name,
+        qty: item.quantity,
+        rate: item.price,
+        amount: item.quantity * item.price
+      }))
+    };
+
+    console.log("📤 Sending Data:", JSON.stringify(payload));
+
+    const res = await fetch(`https://dash.safe-grow.com/api/resource/Orders`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: authHeader
+        "Authorization": authHeader
       },
-      body: JSON.stringify({
-        order_id: orderData.orderId,
-        status: orderData.status,
-        customer_name: orderData.payerName,
-        customer_email: orderData.payerEmail,
-        customer_phone: orderData.payerPhone, // Send phone number
-        currency: orderData.currency,
-        amount: orderData.amount,
-        transaction_id: orderData.transactionId,
-        
-        // 🔥 Add Products into Child Table
-        items: items.map(item => ({
-          item_code: item.id, // Assuming you use `id` as product ID
-          item_name: item.name,
-          quantity: item.quantity,
-          rate: item.price,
-          total: item.quantity * item.price
-        }))
-      }),
+      body: JSON.stringify(payload)
     });
 
-    const responseData = await res.json();
-    console.log("Frappe Order Created:", responseData);
+    const responseText = await res.text();
+    console.log("✅ Response:", responseText);
+
+    if (!res.ok) {
+      throw new Error(`Frappe API Error: ${res.status} ${res.statusText} - ${responseText}`);
+    }
+
+    return JSON.parse(responseText);
   } catch (error) {
-    console.error("Error creating order in Frappe:", error);
+    console.error("🚨 Error creating order in Frappe:", error);
   }
 }
