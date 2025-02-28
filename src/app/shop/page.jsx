@@ -15,7 +15,7 @@ export default function Shop() {
       <div className="relative py-24 sm:py-32 overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1469817805249-72b7df1c3c05?w=1200&q=80"
+            src="/shop-main.jpeg"
             alt="Shop hero background"
             className="w-full h-full object-cover"
           />

@@ -17,7 +17,7 @@ export default function Navbar({ darkMode = false }) {
     { name: "Programs", href: "/programs", bgColor: "bg-[#009688]" },
     { name: "Stories", href: "/stories", bgColor: "bg-[#009688]" },
     { name: "Shop", href: "/shop", bgColor: "bg-[#009688]" },
-    { name: "Directory", href: "/businesses", bgColor: "bg-[#009688]" },
+    { name: "Business-Directory", href: "/businesses", bgColor: "bg-[#009688]" },
     { name: "Contact", href: "/contact", bgColor: "bg-[#009688]" },
   ];
 
@@ -47,12 +47,12 @@ export default function Navbar({ darkMode = false }) {
         </div>
 
         {/* Navigation Links for Desktop */}
-        <ul className={`hidden lg:flex space-x-8 text-lg ${textColor}`}>
+        <ul className={`hidden lg:flex space-x-8 text-md ${textColor}`}>
           {navLinks.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
-                className={`py-2 px-4 rounded-md transition-colors ${
+                className={`py-2 px-2 rounded-md transition-colors ${
                   pathname === link.href
                     ? `${link.bgColor} text-white font-bold`
                     : "hover:bg-gray-700 hover:text-white"
