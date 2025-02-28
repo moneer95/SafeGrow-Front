@@ -21,10 +21,7 @@ export default function PayPalCheckout() {
     <>
       <div
         style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          minHeight: "10vh", // Ensures full screen coverage
+          maxHeight: "90vh", // Ensures full screen coverage
           width: "100%",
           padding: "20px", // Adds spacing for small screens
           overflow: "scroll"
@@ -44,7 +41,7 @@ export default function PayPalCheckout() {
                 headers: {
                   "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ amount: total }),
+                body: JSON.stringify({ amount: total().toFixed(2) }),
               });
               const order = await res.json();
               return order.id; // Return the order ID to PayPal

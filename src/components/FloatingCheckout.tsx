@@ -18,7 +18,7 @@ const FloatingCheckout = () => {
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 100, opacity: 0 }}
-        className="fixed bottom-8 left-1/2 md:left-3/4  transform -translate-x-1/2 z-50"
+        className="fixed bottom-8 left-1/2 md:left-3/4  transform -translate-x-1/2 z-40"
       >
         <Link href="/Cart">
           <motion.div
