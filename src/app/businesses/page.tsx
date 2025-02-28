@@ -6,7 +6,7 @@ import { Instagram, Globe, Mail, Phone, MapPin, Search, X } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import Navbar from "../../components/Navbar.jsx";
-import { businesses, categories } from "../../../lib/data/businesses.ts";
+import { businesses, categories } from "../../../lib/data/businesses";
 
 export default function BusinessDirectory() {
   const [selectedCategory, setSelectedCategory] = useState("all");
