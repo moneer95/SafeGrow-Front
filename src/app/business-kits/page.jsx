@@ -12,6 +12,7 @@ import { toast } from "sonner"; // ✅ Toast notifications
 
 const kits = [
   {
+    id: "small-business-starter",
     name: "Small Business Starter Kit",
     price: 300,
     description: "Support small, local businesses like crafting, tailoring, tutoring, or plant-growing...",
@@ -23,6 +24,7 @@ const kits = [
     image: "/kit-photos/b1-kit.jpeg"
   },
   {
+    id: "online-business-kit",
     name: "Freelancer & Online Business Kit",
     price: 1000,
     description: "For digital entrepreneurs and freelancers...",
@@ -36,6 +38,7 @@ const kits = [
     popular: true
   },
   {
+    id: "advanced-business-kit",
     name: "Advanced Business Equipment Kit",
     price: 2000,
     description: "This kit is for those looking to launch more complex businesses...",

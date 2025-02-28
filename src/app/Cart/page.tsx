@@ -14,6 +14,8 @@ export default function Cart() {
   const { items, removeItem, updateQuantity, total } = useCart();
   const [isOpen, setIsOpen] = useState(false);
 
+  console.log(items)
+
 
   if (items.length === 0) {
     return (

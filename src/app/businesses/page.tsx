@@ -1,28 +1,67 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Instagram, Globe, Mail, Phone, MapPin, Search, X, Facebook, Youtube } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import Navbar from "../../components/Navbar";
-import { businesses } from "../../../lib/data/businesses";
+import { getBusinesses } from "../../../lib/data/businesses";
 
 export default function BusinessDirectory() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [businesses, setBusinesses] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  console.log(businesses)
+
+  // Fetch businesses from the API
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getBusinesses();
+        setBusinesses(data);
+      } catch (err) {
+        setError("Failed to fetch businesses");
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   // Filter businesses based on search query
-  const filteredBusinesses = businesses.filter(business => {
-    return !searchQuery || 
-      business.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+  const filteredBusinesses = businesses.filter((business) => {
+    return (
+      !searchQuery ||
+      business.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       business.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      business.location.toLowerCase().includes(searchQuery.toLowerCase());
+      business.location.toLowerCase().includes(searchQuery.toLowerCase())
+    );
   });
 
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <p>Loading...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <p>{error}</p>
+      </div>
+    );
+  }
   return (
     <div className="min-h-screen bg-gray-50">
       <Navbar darkMode={true} />
-      
+
       {/* Header */}
       <div className="bg-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -33,7 +72,7 @@ export default function BusinessDirectory() {
             <p className="text-gray-600 mb-8">
               Browse our curated directory of Palestinian-owned businesses and startups in Cairo and beyond.
             </p>
-            
+
             {/* Search Bar */}
             <div className="relative max-w-md mx-auto">
               <div className="flex items-center border-2 border-gray-300 rounded-lg overflow-hidden focus-within:border-[#009688] transition-colors">
@@ -46,7 +85,7 @@ export default function BusinessDirectory() {
                   className="w-full py-3 px-4 outline-none text-gray-700"
                 />
                 {searchQuery && (
-                  <button 
+                  <button
                     onClick={() => setSearchQuery("")}
                     className="p-2 mr-1 text-gray-400 hover:text-gray-600"
                   >
@@ -91,7 +130,7 @@ export default function BusinessDirectory() {
                     />
                   )}
                 </div>
-                
+
                 {/* Content */}
                 <div className="flex-1 p-4">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
@@ -102,7 +141,7 @@ export default function BusinessDirectory() {
                         <span>{business.location}</span>
                       </div>
                     </div>
-                    
+
                     <div className="flex flex-wrap gap-2">
                       {business.website && (
                         <a
@@ -115,7 +154,7 @@ export default function BusinessDirectory() {
                           Website
                         </a>
                       )}
-                      
+
                       {business.instagram && (
                         <a
                           href={`https://instagram.com/${business.instagram}`}
@@ -127,7 +166,7 @@ export default function BusinessDirectory() {
                           Instagram
                         </a>
                       )}
-                      
+
                       {business.facebook && (
                         <a
                           href={business.facebook}
@@ -139,7 +178,7 @@ export default function BusinessDirectory() {
                           Facebook
                         </a>
                       )}
-                      
+
                       {business.youtube && (
                         <a
                           href={business.youtube}
@@ -153,9 +192,9 @@ export default function BusinessDirectory() {
                       )}
                     </div>
                   </div>
-                  
+
                   <p className="text-gray-600 mt-3">{business.description}</p>
-                  
+
                   <div className="mt-3 flex items-center gap-3">
                     {business.email && (
                       <a
@@ -166,7 +205,7 @@ export default function BusinessDirectory() {
                         Contact via Email
                       </a>
                     )}
-                    
+
                     {business.phone && (
                       <a
                         href={`tel:${business.phone.replace(/\s+/g, '')}`}
@@ -200,7 +239,7 @@ export default function BusinessDirectory() {
           <p className="text-gray-600 mb-4">
             Join our business directory to increase your visibility and connect with customers.
           </p>
-          <Link 
+          <Link
             href="/contact"
             className="inline-flex items-center px-4 py-2 bg-[#009688] text-white rounded-lg hover:bg-[#007a6c] transition-colors text-sm"
           >

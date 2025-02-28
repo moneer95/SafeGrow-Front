@@ -8,7 +8,7 @@ import { useCart } from "../../lib/hooks/useCart";
 
 export default function PayPalCheckout() {
   const router = useRouter(); // Initialize router
-  const { total } = useCart();
+  const { total, items } = useCart();
 
 
 
@@ -125,7 +125,16 @@ async function createFrappeOrder(orderData) {
         customer_phone: orderData.payerPhone, // Send phone number
         currency: orderData.currency,
         amount: orderData.amount,
-        transaction_id: orderData.transactionId
+        transaction_id: orderData.transactionId,
+        
+        // 🔥 Add Products into Child Table
+        items: items.map(item => ({
+          item_code: item.id, // Assuming you use `id` as product ID
+          item_name: item.name,
+          quantity: item.quantity,
+          rate: item.price,
+          total: item.quantity * item.price
+        }))
       }),
     });
 
