@@ -91,8 +91,8 @@ const Hero = () => {
 
             {/* Popup */}
             {isPopupVisible && (
-              <div className="fixed inset-0 flex items-center w-full justify-center bg-black bg-opacity-50 z-50">
-                <div className="bg-white p-6 rounded-lg shadow-lg  w-10/12">
+              <div className="fixed inset-0 flex items-center w-full justify-center bg-black bg-opacity-50 z-50 ">
+                <div className="bg-white h-[90vh] p-6 rounded-lg shadow-lg  w-10/12 overflow-scroll">
                   <StoryActions />
                   <button
                     className="px-4 py-2 flex mx-auto bg-[#009688] text-white rounded-md hover:bg-[#00796b] transition-colors duration-300"
@@ -109,7 +109,7 @@ const Hero = () => {
       </div>
 
       {/* Dots Navigation */}
-      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3 z-20">
+      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10">
         {images.map((_, index) => (
           <div
             key={index}

@@ -47,7 +47,7 @@ const PayForm = ({ amount, products_ids, isOpen, setIsOpen }) => {
   return (
     <>
       {isOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50">
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 -z-40">
           <div className="bg-white p-6 rounded-lg shadow-lg w-96 relative">
             {/* Close Button */}
             <button

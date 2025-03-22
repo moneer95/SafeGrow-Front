@@ -74,7 +74,7 @@ export default function StoryActions() {
             >
               <Link href={action.href}>
                 <div className={`group h-full p-6 rounded-2xl ${action.color} ${action.hoverColor} transition-all duration-300 cursor-pointer`}>
-                  <div className="flex items-start gap-4">
+                  <div className="flex flex-col md:flex-row items-start gap-4">
                     <div className="p-3 rounded-xl bg-white/80 group-hover:bg-white transition-colors">
                       <action.icon className={`w-6 h-6 ${action.iconColor}`} />
                     </div>
