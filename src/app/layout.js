@@ -1,4 +1,4 @@
-"use client"; 
+"use client";
 import localFont from "next/font/local";
 import "./globals.css";
 import Footer from "../components/Footer";
@@ -30,6 +30,31 @@ const geistMono = localFont({
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="canonical" href="https://safe-grow.com" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "NGO",
+              "name": "SafeGrow",
+              "description": "Supporting displaced Palestinians through business grants, mentorship, and sustainable livelihood programs.",
+              "url": "https://safe-grow.com",
+              "logo": "https://safe-grow.com/Logo.png",
+              "sameAs": [
+                "https://instagram.com/safegrow_org"
+              ],
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Cairo",
+                "addressCountry": "EG"
+              }
+            })
+          }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >

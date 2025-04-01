@@ -126,8 +126,8 @@ const Footer = () => {
             <h3 className="text-lg font-semibold text-white">Contact Us</h3>
             <ul className="space-y-3">
               <li className="flex items-center space-x-3">
-                {/* <Phone className="w-5 h-5 text-[#009688]" />
-                <span>+20 123 456 7890</span> */}
+                <Phone className="w-5 h-5 text-[#009688]" />
+                <span>+20 104 408 1993</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-[#009688]" />
@@ -137,6 +137,10 @@ const Footer = () => {
                 >
                   info@safe-grow.com
                 </a>
+              </li>
+              <li className="flex items-center space-x-3">
+                <MapPin className="w-5 h-5 text-[#009688]" />
+                <span>Egypt, Cairo</span>
               </li>
             </ul>
           </motion.div>

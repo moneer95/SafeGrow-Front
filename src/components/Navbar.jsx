@@ -24,11 +24,11 @@ export default function Navbar({ darkMode = false }) {
   const textColor = darkMode ? "text-gray-800" : "text-white";
 
   return (
-    <header className="relative z-50 w-full">
+    <header className="relative z-40 w-full">
       {/* Main Navbar */}
       <nav className="flex items-center justify-between px-2 py-3 bg-opacity-70 lg:px-6">
         {/* Logo Section */}
-        <div className="flex items-center space-x-2 lg:static lg:left-0 transform lg:translate-x-0 z-50">
+        <div className="flex items-center space-x-2 lg:static lg:left-0 transform lg:translate-x-0 z-40">
           <Link href="/">
             <div className="flex items-start flex-col justify-center">
               <Image
