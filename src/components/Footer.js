@@ -140,7 +140,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center space-x-3">
                 <MapPin className="w-5 h-5 text-[#009688]" />
-                <span>Egypt, Cairo</span>
+                <span>Building 6 - 4th district Badr - New Cairo - Cairo, Egypt</span>
               </li>
             </ul>
           </motion.div>
@@ -158,6 +158,9 @@ const Footer = () => {
               </Link>
               <Link href="/terms" className="hover:text-[#009688] transition-colors duration-300">
                 Terms of Service
+              </Link>
+              <Link href="/return_exchange" className="hover:text-[#009688] transition-colors duration-300">
+                Return & Exchange
               </Link>
             </div>
           </div>
