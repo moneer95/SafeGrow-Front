@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import Navbar from "@/components/Navbar";
+import Navbar from "../../components/Navbar";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
