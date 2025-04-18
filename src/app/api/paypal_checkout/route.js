@@ -14,6 +14,7 @@ export async function POST(req) {
 
     const { amount, currency } = body; // Extract amount from request
 
+    console.log(currency)
 
     if (!amount || isNaN(amount)) {
         return NextResponse.json(
