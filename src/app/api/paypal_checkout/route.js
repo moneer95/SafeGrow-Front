@@ -12,7 +12,7 @@ export async function POST(req) {
 
     const body = await req.json();
 
-    const { amount } = body; // Extract amount from request
+    const { amount, currency } = body; // Extract amount from request
 
 
     if (!amount || isNaN(amount)) {
@@ -33,7 +33,7 @@ export async function POST(req) {
         {
           amount: {
             currency_code: "USD",
-            value: amount.toString(), 
+            value: currency=='EGP' ? (amount*51).toString() : amount.toString(), 
           },
         },
       ],
