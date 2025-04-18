@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation"; // Import Next.js router
 import { useCart } from "../../lib/hooks/useCart";
 
 
-export default function PayPalCheckout() {
+export default function PayPalCheckout(currency) {
   const router = useRouter(); // Initialize router
   const { total, items } = useCart();
 
@@ -41,7 +41,7 @@ export default function PayPalCheckout() {
                 headers: {
                   "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ amount: total().toFixed(2) }),
+                body: JSON.stringify({ amount: total().toFixed(2), currency }),
               });
               const order = await res.json();
               return order.id; // Return the order ID to PayPal
