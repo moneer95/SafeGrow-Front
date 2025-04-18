@@ -33,7 +33,7 @@ export async function POST(req) {
       purchase_units: [
         {
           amount: {
-            currency_code: currency,
+            currency_code: "USD",
             value: currency=='EGP' ? (amount).toFixed(2) : amount.toFixed(2), 
           },
         },
