@@ -33,7 +33,7 @@ export async function POST(req) {
         {
           amount: {
             currency_code: currency,
-            value: amount.toString(), 
+            value: currency=='EGP' ? (amount*51).toString() : amount.toString(), 
           },
         },
       ],
