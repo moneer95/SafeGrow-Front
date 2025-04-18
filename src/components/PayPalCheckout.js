@@ -6,11 +6,12 @@ import { useRouter } from "next/navigation"; // Import Next.js router
 import { useCart } from "../../lib/hooks/useCart";
 
 
-export default function PayPalCheckout(currency) {
+export default function PayPalCheckout({currency}) {
   const router = useRouter(); // Initialize router
   const { total, items } = useCart();
 
 
+  console.log(currency)
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" }); // Scrolls smoothly to the top
