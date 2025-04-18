@@ -153,7 +153,7 @@ export default function Cart() {
 
                 <div className="flex justify-between text-base text-gray-600">
                   <span>Subtotal</span>
-                  <span>${total().toFixed(2)}</span>
+                  <span>{currency=='EGP' ? `E£${(total()*51).toFixed(2)}` :  `$${total().toFixed(2)}`}</span>
                 </div>
                 <div className="flex justify-between text-base text-gray-600">
                   <span>Shipping</span>
@@ -162,8 +162,8 @@ export default function Cart() {
                 <div className="border-t border-gray-200 pt-4">
                   <div className="flex justify-between text-lg font-bold text-gray-900">
                     <span>Total</span>
-                    <span>${total().toFixed(2)}</span>
-                  </div>
+                    <span>{currency=='EGP' ? `E£${(total()*51).toFixed(2)}` :  `$${total().toFixed(2)}`}</span>
+                    </div>
                 </div>
               </div>
 
