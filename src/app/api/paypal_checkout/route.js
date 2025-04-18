@@ -34,7 +34,7 @@ export async function POST(req) {
         {
           amount: {
             currency_code: "USD",
-            value: currency=='EGP' ? (amount*51).toString() : amount.toString(), 
+            value: currency=='EGP' ? (amount*51).toFixed(2) : amount.toFixed(2), 
           },
         },
       ],

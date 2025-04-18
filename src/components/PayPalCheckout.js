@@ -41,7 +41,7 @@ export default function PayPalCheckout(currency) {
                 headers: {
                   "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ amount: total().toFixed(2), currency }),
+                body: JSON.stringify({ amount: total(), currency }),
               });
               const order = await res.json();
               return order.id; // Return the order ID to PayPal
