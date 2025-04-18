@@ -12,7 +12,7 @@ export async function POST(req) {
 
     const body = await req.json();
 
-    const { amount } = body; // Extract amount from request
+    const { amount, currency } = body; // Extract amount from request
 
 
     if (!amount || isNaN(amount)) {
@@ -32,7 +32,7 @@ export async function POST(req) {
       purchase_units: [
         {
           amount: {
-            currency_code: "USD",
+            currency_code: currency,
             value: amount.toString(), 
           },
         },
